@@ -9,7 +9,10 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
 
 configs.setup({
   highlight = { enable = true },
-  indent = { enable = true },
+  indent = { 
+    enable = true,
+    disable = { 'ruby' }
+  },
   auto_install = true,
 })
 

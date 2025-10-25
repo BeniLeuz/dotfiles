@@ -2,7 +2,8 @@
   "plugins": {
     "FixCursorHold.nvim": [],
     "blink.cmp": {
-      "version": "'v1.0.0'"
+      "rev": "327fff9",
+      "version": "'v1.7.0'"
     },
     "friendly-snippets": [],
     "harpoon": {
@@ -16,19 +17,35 @@
       "rev": "67dc346",
       "src": "https://github.com/barreiroleo/ltex_extra.nvim"
     },
-    "mason-lspconfig.nvim": [],
-    "mason.nvim": [],
-    "neotest": [],
+    "mason-lspconfig.nvim": {
+      "rev": "1d77bd8"
+    },
+    "mason.nvim": {
+      "rev": "ad7146a"
+    },
+    "neotest": {
+      "rev": "2089f83"
+    },
     "neotest-gtest": [],
-    "neotest-java": [],
-    "nvim-dap": [],
+    "neotest-java": {
+      "rev": "fbdf5c3"
+    },
+    "nvim-dap": {
+      "rev": "6782b09"
+    },
     "nvim-dap-ui": [],
     "nvim-dap-virtual-text": [],
-    "nvim-jdtls": [],
-    "nvim-lspconfig": [],
+    "nvim-jdtls": {
+      "rev": "380ac14"
+    },
+    "nvim-lspconfig": {
+      "rev": "a9b2fb5"
+    },
     "nvim-nio": [],
     "nvim-treesitter": [],
-    "oil.nvim": [],
+    "oil.nvim": {
+      "rev": "7e1cd77"
+    },
     "plenary.nvim": [],
     "telescope-fzf-native.nvim": [],
     "telescope.nvim": [],
