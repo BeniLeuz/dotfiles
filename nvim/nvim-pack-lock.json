@@ -1,0 +1,48 @@
+{
+  "plugins": {
+    "FixCursorHold.nvim": [],
+    "blink.cmp": {
+      "version": "'v1.0.0'"
+    },
+    "friendly-snippets": [],
+    "harpoon": {
+      "version": "'harpoon2'"
+    },
+    "knap": {
+      "rev": "7db44d0",
+      "src": "https://github.com/frabjous/knap"
+    },
+    "ltex_extra.nvim": {
+      "rev": "67dc346",
+      "src": "https://github.com/barreiroleo/ltex_extra.nvim"
+    },
+    "mason-lspconfig.nvim": [],
+    "mason.nvim": [],
+    "neotest": [],
+    "neotest-gtest": [],
+    "neotest-java": [],
+    "nvim-dap": [],
+    "nvim-dap-ui": [],
+    "nvim-dap-virtual-text": [],
+    "nvim-jdtls": [],
+    "nvim-lspconfig": [],
+    "nvim-nio": [],
+    "nvim-treesitter": [],
+    "oil.nvim": [],
+    "plenary.nvim": [],
+    "telescope-fzf-native.nvim": [],
+    "telescope.nvim": [],
+    "term-edit.nvim": {
+      "version": "'v1.4.0'"
+    },
+    "vim-fugitive": {
+      "rev": "61b51c0",
+      "src": "https://github.com/tpope/vim-fugitive"
+    },
+    "vim-polar": [],
+    "vimtex": {
+      "rev": "be9deac3",
+      "src": "https://github.com/lervag/vimtex"
+    }
+  }
+}
