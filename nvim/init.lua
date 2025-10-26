@@ -80,3 +80,57 @@ require("plugins.neotest")
 --   -- Send the git difftool command
 --   vim.fn.chansend(chan, 'git d -d ' .. remote_branch .. '\n')
 -- end, { desc = 'Git difftool vs upstream' })
+
+-- Go to n arg, e.g. `2ga` to go to 2nd arg
+vim.keymap.set("n", "<C-h>", "<cmd>1argu<cr>zz", { desc = "Go to arg 1" })
+vim.keymap.set("n", "<C-j>", "<cmd>2argu<cr>zz", { desc = "Go to arg 2" })
+vim.keymap.set("n", "<C-k>", "<cmd>3argu<cr>zz", { desc = "Go to arg 3" })
+vim.keymap.set("n", "<C-l>", "<cmd>4argu<cr>zz", { desc = "Go to arg 4" })
+ 
+vim.keymap.set("n", "<leader>a", "<cmd>$argadd %<bar>argded<cr>", { desc = "Add cur file to arglist" })
+ 
+-- Edit arglist in floating window
+vim.keymap.set("n", "<C-e>", function()
+  -- Set dimensions
+  local abs_height = 15
+  local rel_width = 0.7
+ 
+  -- Create buf
+  local argseditor = vim.api.nvim_create_buf(false, true)
+  local filetype = "argseditor"
+  vim.api.nvim_set_option_value("filetype", filetype, { buf = argseditor })
+ 
+  -- Create centered floating window
+  local rows, cols = vim.opt.lines._value, vim.opt.columns._value
+  vim.api.nvim_open_win(argseditor, true, {
+    relative = "editor",
+    height = abs_height,
+    width = math.ceil(cols * rel_width),
+    row = math.ceil(rows / 2 - abs_height / 2),
+    col = math.ceil(cols / 2 - cols * rel_width / 2),
+    border = "single",
+    title = filetype,
+  })
+ 
+  -- Put current arglist
+  local arglist = vim.fn.argv(-1)
+  local to_read = type(arglist) == "table" and arglist or { arglist }
+  vim.api.nvim_buf_set_lines(argseditor, 0, -1, false, to_read)
+ 
+  -- Go to file under cursor
+  vim.keymap.set("n", "<CR>", function()
+    local f = vim.fn.getline(".")
+    vim.api.nvim_buf_delete(argseditor, { force = true })
+    vim.cmd.e(f)
+  end, { desc = "Go to file under cursor" })
+ 
+  -- Write new arglist and close argseditor
+  vim.keymap.set("n", "<C-c>", function()
+    local to_write = vim.api.nvim_buf_get_lines(argseditor, 0, -1, true)
+    vim.cmd("%argd")
+    vim.cmd.arga(table.concat(to_write, " "))
+    vim.api.nvim_buf_delete(argseditor, { force = true })
+  end, { buffer = argseditor, desc = "Update arglist" })
+end, { desc = "Edit arglist" })
+
+
