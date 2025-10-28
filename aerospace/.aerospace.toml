@@ -111,10 +111,10 @@ automatically-unhide-macos-hidden-apps = false
     ctrl-cmd-l = 'focus right'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
-    # cmd-shift-h = 'move left'
-    # cmd-shift-j = 'move down'
-    # cmd-shift-k = 'move up'
-    # cmd-shift-l = 'move right'
+    ctrl-shift-h = 'move left'
+    ctrl-shift-j = 'move down'
+    ctrl-shift-k = 'move up'
+    ctrl-shift-l = 'move right'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#resize
     ctrl-minus = 'resize smart -50'
