@@ -3,10 +3,9 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
-vim.o.number = true
-vim.opt.numberwidth = 3
-vim.opt.signcolumn = "yes:1"
+vim.o.signcolumn = "yes:1"
 vim.o.numberwidth = 1
+vim.o.number = true
 vim.o.relativenumber = true
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
