@@ -90,28 +90,11 @@ vim.lsp.config("texlab", {
 	},
 })
 
--- for debounced saving and compiling for "auto preview"
--- make sure to also add in uncommented option if i want this
--- local timer = nil
--- vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
--- 	pattern = "*.tex",
--- 	callback = function()
--- 		if timer then
--- 			vim.fn.timer_stop(timer)
--- 		end
---
--- 		timer = vim.fn.timer_start(250, function()
--- 			vim.cmd('write')
--- 			vim.cmd('LspTexlabBuild')
--- 		end)
--- 	end,
--- })
-
 -- Lsp attach stuff for mostly latex
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		if not client and client.name ~= "texlab" then
+		if not client or client.name ~= "texlab" then
 			return
 		end
 
