@@ -216,11 +216,8 @@ automatically-unhide-macos-hidden-apps = false
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
 
-# 1) start Ghostty floating so native tabs don’t explode the layout
+# need to do this because macos native tabs + aerospace == gg.
+# also make sure that we use option + shift + ; and then f to then unfloat again
 [[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
 run = "layout floating"
-
-# then add something like this into .zprofile or .zshrc or sumn
-# aerospace layout tiling
-
