@@ -18,15 +18,6 @@ vim.lsp.config("ts_ls", {
 	},
 })
 
-vim.lsp.config("ts_ls", {
-	-- Server-specific settings. See `:help lsp-quickstart`
-	settings = {
-		implicitprojectconfiguration = {
-			checkjs = true,
-		},
-	},
-})
-
 vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
@@ -128,7 +119,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, {})
 vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
 vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, {})
