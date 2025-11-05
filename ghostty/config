@@ -1,0 +1,48 @@
+
+# aerospace needs to start this floatted after i need to unfloat it with:
+# shift + opt + ; and f after
+
+
+font-size = 30
+font-family = Consolas
+background = #000000
+
+# --- Unbind built-ins ---
+keybind = cmd+t=unbind
+keybind = cmd+w=unbind
+keybind = cmd+digit1=unbind
+keybind = cmd+digit2=unbind
+keybind = cmd+digit3=unbind
+keybind = cmd+digit4=unbind
+keybind = cmd+digit5=unbind
+keybind = cmd+digit6=unbind
+keybind = cmd+digit7=unbind
+keybind = cmd+digit8=unbind
+keybind = cmd+digit9=unbind
+
+
+# --- Cmd keys send Alt/Meta ---
+keybind = cmd+t=text:\x1bt
+keybind = cmd+w=text:\x1bw
+keybind = cmd+1=text:\x1b1
+keybind = cmd+2=text:\x1b2
+keybind = cmd+3=text:\x1b3
+keybind = cmd+4=text:\x1b4
+keybind = cmd+5=text:\x1b5
+keybind = cmd+6=text:\x1b6
+keybind = cmd+7=text:\x1b7
+keybind = cmd+8=text:\x1b8
+keybind = cmd+9=text:\x1b9
+
+# --- Option keys manage tabs ---
+keybind = opt+t=new_tab
+keybind = opt+w=close_tab
+keybind = opt+1=goto_tab:1
+keybind = opt+2=goto_tab:2
+keybind = opt+3=goto_tab:3
+keybind = opt+4=goto_tab:4
+keybind = opt+5=goto_tab:5
+keybind = opt+6=goto_tab:6
+keybind = opt+7=goto_tab:7
+keybind = opt+8=goto_tab:8
+keybind = opt+9=goto_tab:9
