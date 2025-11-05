@@ -17,6 +17,10 @@
       "rev": "67dc346",
       "src": "https://github.com/barreiroleo/ltex_extra.nvim"
     },
+    "markdown-preview.nvim": {
+      "rev": "a923f5f",
+      "src": "https://github.com/iamcco/markdown-preview.nvim"
+    },
     "mason-lspconfig.nvim": {
       "rev": "1d77bd8"
     },

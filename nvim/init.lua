@@ -26,6 +26,7 @@ vim.pack.add({
 	{ src = "https://github.com/theHamsta/nvim-dap-virtual-text" },
 	{ src = "https://github.com/rcasia/neotest-java" },
 	{ src = "https://github.com/nvim-neotest/neotest" },
+	{ src = "https://github.com/iamcco/markdown-preview.nvim" },
 })
 
 -- vim.o.shell = '/bin/bash -l'
@@ -43,7 +44,7 @@ vim.pack.add({
 --   tool = nvim_difftool
 -- [difftool "nvim_difftool"]
 --     cmd = nvim -c \"set diff\" -c \"silent! DiffTool $LOCAL $REMOTE\"
-vim.cmd("packadd nvim.difftool")
+-- vim.cmd("packadd nvim.difftool")
 require("vim-options")
 require("vim-remaps")
 require("theme")
@@ -59,6 +60,7 @@ require("plugins.oil")
 require("plugins.autocomplete")
 require("plugins.lsp")
 require("plugins.git")
+require("plugins.markdown-preview")
 require("plugins.term-edit")
 require("plugins.neotest")
 
