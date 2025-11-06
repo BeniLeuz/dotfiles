@@ -3,12 +3,6 @@ require("mason-lspconfig").setup()
 
 vim.lsp.enable("sourcekit")
 
-vim.lsp.config("ltex_plus", {
-	on_attach = function()
-    require("ltex_extra").setup()
-	end,
-})
-
 vim.lsp.config("ts_ls", {
 	-- Server-specific settings. See `:help lsp-quickstart`
 	settings = {
