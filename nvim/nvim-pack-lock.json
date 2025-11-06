@@ -7,6 +7,7 @@
     },
     "friendly-snippets": [],
     "harpoon": {
+      "rev": "87b1a35",
       "version": "'harpoon2'"
     },
     "knap": {
@@ -14,36 +15,37 @@
       "src": "https://github.com/frabjous/knap"
     },
     "ltex_extra.nvim": {
-      "rev": "67dc346",
-      "src": "https://github.com/barreiroleo/ltex_extra.nvim"
+      "rev": "7b2d278",
+      "src": "https://github.com/barreiroleo/ltex_extra.nvim",
+      "version": "'dev'"
     },
     "markdown-preview.nvim": {
       "rev": "a923f5f",
       "src": "https://github.com/iamcco/markdown-preview.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "1d77bd8"
+      "rev": "d7b5feb"
     },
     "mason.nvim": {
       "rev": "ad7146a"
     },
     "neotest": {
-      "rev": "2089f83"
+      "rev": "366175e"
     },
     "neotest-gtest": [],
     "neotest-java": {
       "rev": "fbdf5c3"
     },
     "nvim-dap": {
-      "rev": "6782b09"
+      "rev": "e97dc47"
     },
     "nvim-dap-ui": [],
     "nvim-dap-virtual-text": [],
     "nvim-jdtls": {
-      "rev": "380ac14"
+      "rev": "38d265e"
     },
     "nvim-lspconfig": {
-      "rev": "a9b2fb5"
+      "rev": "2010fc6"
     },
     "nvim-nio": [],
     "nvim-treesitter": [],
@@ -52,7 +54,9 @@
     },
     "plenary.nvim": [],
     "telescope-fzf-native.nvim": [],
-    "telescope.nvim": [],
+    "telescope.nvim": {
+      "rev": "7dbbcfd"
+    },
     "term-edit.nvim": {
       "version": "'v1.4.0'"
     },

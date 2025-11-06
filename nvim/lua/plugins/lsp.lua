@@ -5,7 +5,7 @@ vim.lsp.enable("sourcekit")
 
 vim.lsp.config("ltex_plus", {
 	on_attach = function()
-		require("ltex_extra").setup()
+    require("ltex_extra").setup()
 	end,
 })
 
@@ -57,7 +57,7 @@ vim.lsp.config("texlab", {
 					"-pdf",
 					"-interaction=nonstopmode",
 					"-synctex=1",
-          "-bibtex",
+					"-bibtex",
 					"-auxdir=build",
 					"%f",
 				},
