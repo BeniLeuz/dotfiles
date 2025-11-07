@@ -70,6 +70,9 @@ local function setup_keybinds(buffer)
 		buf.prompt.cursor_col = cursor[2] + 1
 		vim.cmd("startinsert")
 	end, { buffer = buffer })
+
+  -- todo: create a keybind for carriage return that makes the current prompt line empty.
+  -- so that it is SURELY not reentering on termenter the old line from an old prompt if it hasnt refound a new one
 end
 
 local function setup_cmds()
