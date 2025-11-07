@@ -62,12 +62,12 @@ require("plugins.lsp")
 require("plugins.ltex")
 require("plugins.git")
 require("plugins.markdown-preview")
-require("plugins.term-edit")
+-- require("plugins.term-edit")
 require("plugins.neotest")
 
 
 
--- require("termbuf").setup({})
+require("termbuf").setup({})
 -- for printing
 -- vim.cmd("colorscheme polar");
 --
