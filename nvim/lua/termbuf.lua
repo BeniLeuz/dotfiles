@@ -7,11 +7,11 @@ local M = {}
 -- 4. this would be the clean solution to handle weird shit
 
 local function get_multiline(buf)
-  if buf.prompt.row == nil or buf.prompt.col == nil then
-    return
-  end
+	if buf.prompt.row == nil or buf.prompt.col == nil then
+		return
+	end
 
-
+  -- 4 lines multiline support right now
 	local lines = vim.api.nvim_buf_get_lines(0, buf.prompt.row - 1, buf.prompt.row + 3, false)
 	local line = ""
 
@@ -23,7 +23,7 @@ local function get_multiline(buf)
 		end
 	end
 
-  -- vim.notify("got multiline with: " .. line)
+	vim.notify("got multiline with: " .. line)
 	return line
 end
 
@@ -40,15 +40,23 @@ local function clear_line(buf)
 end
 
 local function insert_line(buf)
-	-- vim.notify("insert line with: " .. buf.prompt.line)
 	return vim.api.nvim_chan_send(vim.bo.channel, buf.prompt.line)
 end
 
 -- todo:  here need to calculate on multilinin
 local function set_term_cursor(cursor_col)
 	local buf = M.buffers[vim.api.nvim_get_current_buf()]
+
+	local window_id = vim.api.nvim_get_current_win()
+	local window_info = vim.fn.getwininfo(window_id)[1]
+
+	-- we need textoff since .width actually includes the gutter and number = true width etc which is not what we need.
+	local max_width = window_info.width - window_info.textoff
+	local diff_row = buf.prompt.cursor_row - buf.prompt.row
+	local movement = (diff_row * max_width) + (cursor_col - buf.prompt.col)
+
 	local p = replace_term_codes(buf.keybinds.goto_startof_line)
-		.. vim.fn["repeat"](replace_term_codes(buf.keybinds.move_char_forward), cursor_col - buf.prompt.col)
+		.. vim.fn["repeat"](replace_term_codes(buf.keybinds.move_char_forward), movement)
 	vim.api.nvim_chan_send(vim.bo.channel, p)
 end
 
@@ -66,6 +74,7 @@ local function setup_keybinds(buffer)
 		local buf = M.buffers[buffer]
 		local cursor = vim.api.nvim_win_get_cursor(0)
 		buf.prompt.cursor_col = cursor[2]
+		buf.prompt.cursor_row = cursor[1]
 		vim.cmd("startinsert")
 	end, { buffer = buffer })
 
@@ -73,11 +82,17 @@ local function setup_keybinds(buffer)
 		local buf = M.buffers[buffer]
 		local cursor = vim.api.nvim_win_get_cursor(0)
 		buf.prompt.cursor_col = cursor[2] + 1
+		buf.prompt.cursor_row = cursor[1]
 		vim.cmd("startinsert")
 	end, { buffer = buffer })
 
-  -- todo: create a keybind for carriage return that makes the current prompt line empty.
-  -- so that it is SURELY not reentering on termenter the old line from an old prompt if it hasnt refound a new one
+	vim.keymap.set("t", "<CR>", function()
+		local buf = M.buffers[buffer]
+		buf.prompt.line = ""
+		buf.prompt.row = nil
+		buf.prompt.col = nil
+		return vim.api.nvim_replace_termcodes("<CR>", true, false, true)
+	end, { expr = true, buffer = buffer })
 end
 
 local function setup_cmds()
@@ -96,11 +111,14 @@ local function setup_cmds()
 				local line = vim.api.nvim_get_current_line()
 				line = line:sub(1, start[2]) .. line:sub(ent[2] + 2)
 				buf.prompt.line = line:sub(buf.prompt.col + 1)
+
 				if start[1] == ent[1] and start[2] == ent[2] then
 					buf.prompt.cursor_col = start[2] - 1
 				else
 					buf.prompt.cursor_col = start[2]
 				end
+
+				buf.prompt.cursor_row = start[1]
 			end
 		end,
 	})
@@ -132,11 +150,11 @@ local function setup_cmds()
 				local s, e = line:find(prompt)
 				if s ~= nil then
 					buf.prompt.row = cursor[1]
-          buf.prompt.col = e
+					buf.prompt.col = e
 				end
 			end
 
-      save_line(buf)
+			save_line(buf)
 		end,
 	})
 
@@ -221,9 +239,9 @@ local function setup()
 					row = nil,
 					col = nil,
 
-          -- this represents where we went into keybinds like a or I etc that we know where to go after on termenter
+					-- this represents where we went into keybinds like a or I etc that we know where to go after on termenter
 					cursor_col = nil,
-          cursor_row = nil
+					cursor_row = nil,
 				},
 			}
 			setup_keybinds(args.buf)
