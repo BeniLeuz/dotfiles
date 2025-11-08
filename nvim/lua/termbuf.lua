@@ -2,7 +2,7 @@ local M = {}
 
 -- todo: ciobject with empty object will just not work... callbacks ive tried to get cursor pos
 -- textyankpost, textchanged, modechanged, ci" override, modechangefunc or something like that
--- all of the mwill not fire before termenter when doing empty "" i think i need to patch nvim core if i want 
+-- all of the mwill not fire before termenter when doing empty "" i think i need to patch nvim core if i want
 -- a termenterpre autocmd (would make this entire thing waaay easier btw)
 --
 -- NEWEREST NOTERES
@@ -90,6 +90,11 @@ local function setup_keybinds(buffer)
 	end, { buffer = buffer })
 
 	vim.keymap.set("t", "<CR>", function()
+    -- if using my unnest plugin togheter i support it!
+		if _G.TermbufPreCR then
+			pcall(_G.TermbufPreCR)
+		end
+
 		local buf = M.buffers[buffer]
 		buf.prompt.line = ""
 		buf.prompt.row = nil

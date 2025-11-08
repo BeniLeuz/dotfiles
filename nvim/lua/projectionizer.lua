@@ -1,4 +1,5 @@
-local function term_intercept_cr()
+-- global since termbuf multiline overrides <CR> so we make this a global that it can call
+function _G.TermbufPreCR()
   local line = vim.api.nvim_get_current_line()
 
   -- THIS SPECIFICALLY BREAKS WITH NVIM IN PATH IF SPACES LIKE OSX LIKE .config nvim % in prompt lol
@@ -13,7 +14,8 @@ local function term_intercept_cr()
   return vim.api.nvim_replace_termcodes("<CR>", true, false, true)
 end
 
-vim.keymap.set("t", "<CR>", term_intercept_cr, { expr = true, noremap = true })
+
+vim.keymap.set("t", "<CR>", _G.TermbufPreCR, { expr = true, noremap = true })
 
 if not vim.env.NVIM then
   return
