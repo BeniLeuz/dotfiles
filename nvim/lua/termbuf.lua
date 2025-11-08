@@ -11,7 +11,7 @@ local function get_multiline(buf)
 		return
 	end
 
-  -- 4 lines multiline support right now
+	-- 4 lines multiline support right now
 	local lines = vim.api.nvim_buf_get_lines(0, buf.prompt.row - 1, buf.prompt.row + 3, false)
 	local line = ""
 
@@ -22,8 +22,6 @@ local function get_multiline(buf)
 			line = line .. v
 		end
 	end
-
-	vim.notify("got multiline with: " .. line)
 	return line
 end
 
@@ -106,11 +104,26 @@ local function setup_cmds()
 			local ent = vim.api.nvim_buf_get_mark(args.buf, "]")
 			local buf = M.buffers[args.buf]
 
-			if start[1] ~= ent[1] then
-			elseif vim.v.event.operator == "c" then
-				local line = vim.api.nvim_get_current_line()
-				line = line:sub(1, start[2]) .. line:sub(ent[2] + 2)
-				buf.prompt.line = line:sub(buf.prompt.col + 1)
+      -- this next part was written by ai take it with a grain of salt XD but it tapped 
+      -- it so im keeping it for now todo: it does break on empty textyankpost like ci" on "" i think this never runs
+			if vim.v.event.operator == "c" then
+        print("this never ran")
+				local joined = get_multiline(buf)
+
+				-- figure out absolute offsets for the yank marks inside that joined string
+				local offset = 0
+				for i = buf.prompt.row, start[1] - 1 do
+					-- only count real lines between the prompt start and the change start
+					local l = vim.api.nvim_buf_get_lines(args.buf, i - 1, i, false)[1]
+					offset = offset + #l
+				end
+
+				local s_abs = (start[2] - buf.prompt.col) + offset
+				local e_abs = (ent[2] - buf.prompt.col) + offset
+
+				-- simulate what the buffer will look like after the change
+				local new_line = joined:sub(1, s_abs) .. joined:sub(e_abs + 2)
+				buf.prompt.line = new_line
 
 				if start[1] == ent[1] and start[2] == ent[2] then
 					buf.prompt.cursor_col = start[2] - 1
