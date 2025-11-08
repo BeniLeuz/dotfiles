@@ -7,6 +7,11 @@ local M = {}
 -- 4. this would be the clean solution to handle weird shit
 
 local function get_multiline(buf)
+  if buf.prompt.row == nil or buf.prompt.col == nil then
+    return
+  end
+
+
 	local lines = vim.api.nvim_buf_get_lines(0, buf.prompt.row - 1, buf.prompt.row + 3, false)
 	local line = ""
 
