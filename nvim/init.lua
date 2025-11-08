@@ -12,7 +12,6 @@ vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
-	{ src = "https://github.com/chomosuke/term-edit.nvim", version = "v1.4.0" },
 	{ src = "https://github.com/tpope/vim-fugitive" },
 	-- neotest
 	-- INFO: needs to be ran to download junit console
@@ -50,8 +49,6 @@ require("vim-remaps")
 require("theme")
 require("projectionizer")
 require("commandwindow")
--- currently broken in nvim 12 not sure why just rewrite this XDDD
--- require("plugins.editable_term")
 require("plugins.harpoon")
 require("plugins.treesitter")
 require("plugins.telescope")
@@ -62,12 +59,11 @@ require("plugins.lsp")
 require("plugins.ltex")
 require("plugins.git")
 require("plugins.markdown-preview")
--- require("plugins.term-edit")
 require("plugins.neotest")
-
-
-
 require("termbuf").setup({})
+
+
+
 -- for printing
 -- vim.cmd("colorscheme polar");
 --
