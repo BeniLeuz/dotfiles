@@ -1,5 +1,10 @@
 local M = {}
 
+-- todo: ciobject with empty object will just not work... callbacks ive tried to get cursor pos
+-- textyankpost, textchanged, modechanged, ci" override, modechangefunc or something like that
+-- all of the mwill not fire before termenter when doing empty "" i think i need to patch nvim core if i want 
+-- a termenterpre autocmd (would make this entire thing waaay easier btw)
+--
 -- NEWEREST NOTERES
 -- 1. command used we are in a state where we dont know the prompt location.
 -- 2. enable textchangedt and textchanged to search for a new prompt
@@ -104,10 +109,9 @@ local function setup_cmds()
 			local ent = vim.api.nvim_buf_get_mark(args.buf, "]")
 			local buf = M.buffers[args.buf]
 
-      -- this next part was written by ai take it with a grain of salt XD but it tapped 
-      -- it so im keeping it for now todo: it does break on empty textyankpost like ci" on "" i think this never runs
+			-- this next part was written by ai take it with a grain of salt XD but it tapped
+			-- it so im keeping it for now todo: it does break on empty textyankpost like ci" on "" i think this never runs
 			if vim.v.event.operator == "c" then
-        print("this never ran")
 				local joined = get_multiline(buf)
 
 				-- figure out absolute offsets for the yank marks inside that joined string
@@ -199,40 +203,6 @@ local function setup_cmds()
 			end
 		end,
 	})
-
-	-- this triggers before a textyankpost. This is crucial since if we try to use ci" on an empty string no text
-	-- yank post will be triggered but this STILL will be triggered and we can catch the edge case here.
-	-- todo: we can probably just modifiable false here in the right occasion when cursor_col == nil
-	-- then we can do modifiable false and then feedkeys a/i to land at exact location
-	-- vim.api.nvim_create_autocmd("ModeChanged", {
-	--   group = group,
-	--   callback = function(args)
-	--     if vim.bo[args.buf].buftype == "terminal" then
-	--       local buf = M.buffers[args.buf]
-	--
-	--       if buf.prompt.cursor_col == nil then
-	--         -- Save old error writer
-	--         local old_err_write = vim.api.nvim_err_write
-	--         vim.api.nvim_err_write = function(_) end
-	--
-	--         -- Flip modifiable off (cancels ci" etc.)
-	--         vim.bo.modifiable = false
-	--         buf.prompt.cursor_col = vim.api.nvim_win_get_cursor(0)
-	--
-	--         -- Restore error handler in the next tick
-	--         vim.schedule(function()
-	--           vim.api.nvim_err_write = old_err_write
-	--
-	--           vim.api.nvim_feedkeys(
-	--             vim.api.nvim_replace_termcodes("i", true, false, true),
-	--             "n", -- non-remappable
-	--             false -- don't wait for input
-	--           )
-	--         end)
-	--       end
-	--     end
-	--   end
-	-- })
 end
 
 --- Set up the plugin internally on termopen
