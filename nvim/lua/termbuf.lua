@@ -89,16 +89,18 @@ local function setup_keybinds(buffer)
 		vim.cmd("startinsert")
 	end, { buffer = buffer })
 
+	local original_cr = vim.fn.maparg("<CR>", "t", false, true)
 	vim.keymap.set("t", "<CR>", function()
-    -- if using my unnest plugin togheter i support it!
-		if _G.TermbufPreCR then
-			pcall(_G.TermbufPreCR)
-		end
-
 		local buf = M.buffers[buffer]
 		buf.prompt.line = ""
 		buf.prompt.row = nil
 		buf.prompt.col = nil
+
+		-- Execute any original mapping if it existed
+		if original_cr and original_cr.callback then
+			return original_cr.callback()
+		end
+
 		return vim.api.nvim_replace_termcodes("<CR>", true, false, true)
 	end, { expr = true, buffer = buffer })
 end
