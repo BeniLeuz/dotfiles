@@ -1,3 +1,7 @@
+-- banger commands:
+-- diffin merges
+-- Git difftool origin/featurebranch..origin/dev for example
+--
 -- workflow if i use this
 -- leader gs open window
 -- literal = = togglin the inline diff
