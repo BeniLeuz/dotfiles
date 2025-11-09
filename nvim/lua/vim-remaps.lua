@@ -63,10 +63,6 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- showing up diagnostics with newlines in a floating window
 vim.keymap.set({ "n" }, "<leader>cd", vim.diagnostic.open_float)
 
-
--- tabbing around projects like this is emacs fr
-vim.keymap.set("n", "<leader>1", "<Cmd>tabn 1<CR>")
-
 -- could map this via sending esc + ^[1 sequence in iterm keybinds
 -- maybe one day lets see if i can work with only nvim tabs froim now on then i might
 -- legit switch to only using nvim and also rebinding cmd+t/w and stuff

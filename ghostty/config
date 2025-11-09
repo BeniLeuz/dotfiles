@@ -1,10 +1,11 @@
 
 # aerospace needs to start this floatted after i need to unfloat it with:
 # shift + opt + ; and f after
-
+theme = Dracula+
 
 font-size = 31
 font-family = Consolas
+font-style-bold = false
 background = #000000
 
 # --- Unbind built-ins ---
