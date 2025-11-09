@@ -17,6 +17,7 @@ local function get_multiline(buf)
 	end
 
 	-- 4 lines multiline support right now
+  -- todo make this configurable
 	local lines = vim.api.nvim_buf_get_lines(0, buf.prompt.row - 1, buf.prompt.row + 3, false)
 	local line = ""
 
