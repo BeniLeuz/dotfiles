@@ -74,6 +74,7 @@ local function update_line(buf)
 end
 
 local function setup_keybinds(buffer)
+  -- todo: add I and A keybinds
 	vim.keymap.set("n", "i", function()
 		local buf = M.buffers[buffer]
 		local cursor = vim.api.nvim_win_get_cursor(0)
