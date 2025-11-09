@@ -46,3 +46,6 @@ keybind = opt+6=goto_tab:6
 keybind = opt+7=goto_tab:7
 keybind = opt+8=goto_tab:8
 keybind = opt+9=goto_tab:9
+
+copy-on-select = clipboard
+clipboard-paste-protection = false
