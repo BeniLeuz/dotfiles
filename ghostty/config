@@ -50,3 +50,4 @@ keybind = opt+9=goto_tab:9
 
 copy-on-select = clipboard
 clipboard-paste-protection = false
+macos-option-as-alt = false
