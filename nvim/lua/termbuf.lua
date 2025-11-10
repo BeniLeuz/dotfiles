@@ -206,6 +206,8 @@ local function setup_cmds()
 		callback = function(args)
 			local buf = M.buffers[args.buf]
 			local cur = vim.api.nvim_win_get_cursor(0)
+      -- todo fix afte rexecution prompt being editable in <CR> callback thanks modifiable true
+      -- and then into modifiable false needs to be simply set or maybe external state var
 
 			if buf.prompt.col ~= nil and buf.prompt.col ~= nil then
 				vim.bo.modifiable = (buf.prompt.row == cur[1] and buf.prompt.col <= cur[2]) or buf.prompt.row < cur[1]
