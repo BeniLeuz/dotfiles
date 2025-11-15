@@ -9,8 +9,6 @@ font-style-bold = false
 background = #000000
 
 # --- Unbind built-ins ---
-keybind = cmd+t=unbind
-keybind = cmd+w=unbind
 keybind = cmd+digit1=unbind
 keybind = cmd+digit2=unbind
 keybind = cmd+digit3=unbind
@@ -21,6 +19,33 @@ keybind = cmd+digit7=unbind
 keybind = cmd+digit8=unbind
 keybind = cmd+digit9=unbind
 
+# unbind even more readline keybinds that should be on alt
+keybind = cmd+a=unbind
+keybind = cmd+b=unbind
+keybind = cmd+c=unbind
+keybind = cmd+d=unbind
+keybind = cmd+e=unbind
+keybind = cmd+f=unbind
+keybind = cmd+g=unbind
+keybind = cmd+h=unbind
+keybind = cmd+i=unbind
+keybind = cmd+j=unbind
+keybind = cmd+k=unbind
+keybind = cmd+l=unbind
+keybind = cmd+m=unbind
+keybind = cmd+n=unbind
+keybind = cmd+o=unbind
+keybind = cmd+p=unbind
+keybind = cmd+q=unbind
+keybind = cmd+r=unbind
+keybind = cmd+s=unbind
+keybind = cmd+t=unbind
+keybind = cmd+u=unbind
+keybind = cmd+v=unbind
+keybind = cmd+w=unbind
+keybind = cmd+x=unbind
+keybind = cmd+y=unbind
+keybind = cmd+z=unbind
 
 # --- Cmd keys send Alt/Meta ---
 keybind = cmd+t=text:\x1bt
@@ -34,6 +59,34 @@ keybind = cmd+6=text:\x1b6
 keybind = cmd+7=text:\x1b7
 keybind = cmd+8=text:\x1b8
 keybind = cmd+9=text:\x1b9
+keybind = cmd+a=text:\x1ba
+keybind = cmd+b=text:\x1bb
+keybind = cmd+c=text:\x1bc
+keybind = cmd+d=text:\x1bd
+keybind = cmd+e=text:\x1be
+keybind = cmd+f=text:\x1bf
+keybind = cmd+g=text:\x1bg
+keybind = cmd+h=text:\x1bh
+keybind = cmd+i=text:\x1bi
+keybind = cmd+j=text:\x1bj
+keybind = cmd+k=text:\x1bk
+keybind = cmd+l=text:\x1bl
+keybind = cmd+m=text:\x1bm
+keybind = cmd+n=text:\x1bn
+keybind = cmd+o=text:\x1bo
+keybind = cmd+p=text:\x1bp
+keybind = cmd+q=text:\x1bq
+keybind = cmd+r=text:\x1br
+keybind = cmd+s=text:\x1bs
+keybind = cmd+t=text:\x1bt
+keybind = cmd+u=text:\x1bu
+keybind = cmd+v=text:\x1bv
+keybind = cmd+w=text:\x1bw
+keybind = cmd+x=text:\x1bx
+keybind = cmd+y=text:\x1by
+keybind = cmd+z=text:\x1bz
+
+
 
 # --- Option keys manage tabs ---
 keybind = opt+t=new_tab
