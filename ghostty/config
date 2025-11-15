@@ -22,7 +22,7 @@ keybind = cmd+digit9=unbind
 # unbind even more readline keybinds that should be on alt
 keybind = cmd+a=unbind
 keybind = cmd+b=unbind
-keybind = cmd+c=unbind
+# keybind = cmd+c=unbind
 keybind = cmd+d=unbind
 keybind = cmd+e=unbind
 keybind = cmd+f=unbind
@@ -41,7 +41,7 @@ keybind = cmd+r=unbind
 keybind = cmd+s=unbind
 keybind = cmd+t=unbind
 keybind = cmd+u=unbind
-keybind = cmd+v=unbind
+# keybind = cmd+v=unbind
 keybind = cmd+w=unbind
 keybind = cmd+x=unbind
 keybind = cmd+y=unbind
@@ -61,7 +61,7 @@ keybind = cmd+8=text:\x1b8
 keybind = cmd+9=text:\x1b9
 keybind = cmd+a=text:\x1ba
 keybind = cmd+b=text:\x1bb
-keybind = cmd+c=text:\x1bc
+# keybind = cmd+c=text:\x1bc
 keybind = cmd+d=text:\x1bd
 keybind = cmd+e=text:\x1be
 keybind = cmd+f=text:\x1bf
@@ -80,7 +80,7 @@ keybind = cmd+r=text:\x1br
 keybind = cmd+s=text:\x1bs
 keybind = cmd+t=text:\x1bt
 keybind = cmd+u=text:\x1bu
-keybind = cmd+v=text:\x1bv
+# keybind = cmd+v=text:\x1bv
 keybind = cmd+w=text:\x1bw
 keybind = cmd+x=text:\x1bx
 keybind = cmd+y=text:\x1by
