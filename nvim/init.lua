@@ -6,6 +6,8 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
+  { src = "https://github.com/junegunn/fzf" },
+	{ src = "https://github.com/ibhagwan/fzf-lua" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/rafamadriz/friendly-snippets" },
 	{ src = "https://github.com/Saghen/blink.cmp", version = "v1.7.0" },
@@ -55,6 +57,7 @@ require("plugins.telescope")
 require("plugins.git")
 require("plugins.oil")
 require("plugins.autocomplete")
+require("plugins.fzf")
 require("plugins.lsp")
 require("plugins.ltex")
 require("plugins.git")

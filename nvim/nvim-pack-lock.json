@@ -6,6 +6,14 @@
       "version": "'v1.7.0'"
     },
     "friendly-snippets": [],
+    "fzf": {
+      "rev": "2ab923f",
+      "src": "https://github.com/junegunn/fzf"
+    },
+    "fzf-lua": {
+      "rev": "6db3677",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
     "harpoon": {
       "rev": "87b1a35",
       "version": "'harpoon2'"
