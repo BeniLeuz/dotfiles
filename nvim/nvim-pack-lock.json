@@ -1,21 +1,29 @@
 {
   "plugins": {
-    "FixCursorHold.nvim": [],
+    "FixCursorHold.nvim": {
+      "rev": "1900f89dc17c603eec29960f57c00bd9ae696495",
+      "src": "https://github.com/antoinemadec/FixCursorHold.nvim"
+    },
     "blink.cmp": {
-      "rev": "327fff9",
+      "rev": "327fff91fe6af358e990be7be1ec8b78037d2138",
+      "src": "https://github.com/Saghen/blink.cmp",
       "version": "'v1.7.0'"
     },
-    "friendly-snippets": [],
+    "friendly-snippets": {
+      "rev": "572f5660cf05f8cd8834e096d7b4c921ba18e175",
+      "src": "https://github.com/rafamadriz/friendly-snippets"
+    },
     "fzf": {
-      "rev": "2ab923f",
+      "rev": "d01eaa9de3f0cfa1b57701e3577b4f7afee0e2be",
       "src": "https://github.com/junegunn/fzf"
     },
     "fzf-lua": {
-      "rev": "6db3677",
+      "rev": "20e2d3099ba99f37f9a7c7d9ed2a9d83c3b20618",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "harpoon": {
-      "rev": "87b1a35",
+      "rev": "87b1a3506211538f460786c23f98ec63ad9af4e5",
+      "src": "https://github.com/ThePrimeagen/harpoon",
       "version": "'harpoon2'"
     },
     "knap": {
@@ -32,49 +40,80 @@
       "src": "https://github.com/iamcco/markdown-preview.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "d7b5feb"
+      "rev": "4823a251e7578a835bb979c37df390fca692ba39",
+      "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason.nvim": {
-      "rev": "ad7146a"
+      "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
+      "src": "https://github.com/mason-org/mason.nvim"
     },
     "neotest": {
-      "rev": "366175e"
+      "rev": "deadfb1af5ce458742671ad3a013acb9a6b41178",
+      "src": "https://github.com/nvim-neotest/neotest"
     },
-    "neotest-gtest": [],
+    "neotest-gtest": {
+      "rev": "b66f1d33cbf3b37b9803e6bc7ef47ac60eba86b1",
+      "src": "https://github.com/alfaix/neotest-gtest"
+    },
     "neotest-java": {
-      "rev": "fbdf5c3"
+      "rev": "341db7ff9c5e12f3240bb66ed9e62a4c08740a13",
+      "src": "https://github.com/rcasia/neotest-java"
     },
     "nvim-dap": {
-      "rev": "e97dc47"
+      "rev": "085386b9359ddf8d76ad89b98973b8e332dc5ba3",
+      "src": "https://github.com/mfussenegger/nvim-dap"
     },
-    "nvim-dap-ui": [],
-    "nvim-dap-virtual-text": [],
+    "nvim-dap-ui": {
+      "rev": "cf91d5e2d07c72903d052f5207511bf7ecdb7122",
+      "src": "https://github.com/rcarriga/nvim-dap-ui"
+    },
+    "nvim-dap-virtual-text": {
+      "rev": "fbdb48c2ed45f4a8293d0d483f7730d24467ccb6",
+      "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
+    },
     "nvim-jdtls": {
-      "rev": "38d265e"
+      "rev": "f73731b543f5971e0da9665eb1d7ceffe1fde71f",
+      "src": "https://github.com/mfussenegger/nvim-jdtls"
     },
     "nvim-lspconfig": {
-      "rev": "2010fc6"
+      "rev": "dec357ee48ff7e2e5b76898fd7c67b61a627d3ac",
+      "src": "https://github.com/neovim/nvim-lspconfig"
     },
-    "nvim-nio": [],
-    "nvim-treesitter": [],
+    "nvim-nio": {
+      "rev": "21f5324bfac14e22ba26553caf69ec76ae8a7662",
+      "src": "https://github.com/nvim-neotest/nvim-nio"
+    },
+    "nvim-treesitter": {
+      "rev": "42fc28ba918343ebfd5565147a42a26580579482",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
+      "version": "'master'"
+    },
     "oil.nvim": {
-      "rev": "7e1cd77"
+      "rev": "f55b25e493a7df76371cfadd0ded5004cb9cd48a",
+      "src": "https://github.com/stevearc/oil.nvim"
     },
-    "plenary.nvim": [],
-    "telescope-fzf-native.nvim": [],
+    "plenary.nvim": {
+      "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "telescope-fzf-native.nvim": {
+      "rev": "6fea601bd2b694c6f2ae08a6c6fab14930c60e2c",
+      "src": "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
+    },
     "telescope.nvim": {
-      "rev": "7dbbcfd"
-    },
-    "term-edit.nvim": {
-      "version": "'v1.4.0'"
+      "rev": "0d8b6eaa0b5ae6bb3d9785f7a3ba4a4c6c1b1af2",
+      "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "vim-fugitive": {
       "rev": "61b51c0",
       "src": "https://github.com/tpope/vim-fugitive"
     },
-    "vim-polar": [],
+    "vim-polar": {
+      "rev": "dc7723d0a8ee8b00a3d15ef19c6720403654c23b",
+      "src": "https://github.com/habamax/vim-polar"
+    },
     "vimtex": {
-      "rev": "be9deac3",
+      "rev": "f707368022cdb851716be0d2970b90599c84a6a6",
       "src": "https://github.com/lervag/vimtex"
     }
   }
