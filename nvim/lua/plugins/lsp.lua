@@ -3,6 +3,30 @@ require("mason-lspconfig").setup()
 
 vim.lsp.enable("sourcekit")
 
+vim.lsp.config("ltex_plus", {
+	settings = {
+		ltex = {
+			language = "en-US",
+			additionalRules = {
+				motherTongue = "en-US",
+			},
+		},
+	},
+})
+
+vim.lsp.enable("ltex_plus", false)
+
+vim.keymap.set("n", "<leader>cs", function()
+	local client = vim.lsp.get_clients({ name = "ltex_plus", bufnr = 0 })[1]
+	if client then
+		vim.lsp.stop_client(client.id)
+		vim.notify("[ltex] spellcheck disabled", vim.log.levels.INFO)
+	else
+		vim.cmd("LspStart ltex_plus")
+		vim.notify("[ltex] spellcheck enabled", vim.log.levels.INFO)
+	end
+end, { desc = "Toggle ltex spellcheck" })
+
 vim.lsp.config("ts_ls", {
 	-- Server-specific settings. See `:help lsp-quickstart`
 	settings = {
