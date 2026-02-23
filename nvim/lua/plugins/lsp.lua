@@ -25,9 +25,14 @@ vim.lsp.config("lua_ls", {
 vim.lsp.config("clangd", {
 	init_options = {
 		fallbackflags = {
-			-- "-std=c++23",
+			"-std=c99",
 			"-i../include/",
 			"-i./include/",
+      "-pendantic",
+      "-pendantic-errors",
+      "-Werror",
+      "-Wall",
+      "-Wextra"
 		},
 	},
 })

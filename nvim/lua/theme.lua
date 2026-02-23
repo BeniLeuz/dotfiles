@@ -5,8 +5,39 @@ local colors = {
   keyword = "#FFCF70",   -- for @keyword
   string = "#B2DC7E",    -- for @string
   comment = "#5C6370",   -- for @comment
+  code_inline_fg = "#73daca",
+  code_inline_bg = "#1a1f2f",
+  code_block_bg = "#0d101a",
+  -- stuff for readmes etc
+  -- old dont change
+  heading_bg = { "#1f2335", "#24283b", "#2f3549", "#30324a", "#2d3144", "#272b3b" },
+  heading_fg = { "#f7768e", "#ff9e64", "#e0af68", "#9ece6a", "#7dcfff", "#bb9af7" },
 }
 
+local markdown_headings = {
+  "@markup.heading.1.markdown",
+  "@markup.heading.2.markdown",
+  "@markup.heading.3.markdown",
+  "@markup.heading.4.markdown",
+  "@markup.heading.5.markdown",
+  "@markup.heading.6.markdown",
+}
+
+for idx, group in ipairs(markdown_headings) do
+  vim.api.nvim_set_hl(0, group, {
+    fg = colors.heading_fg[idx],
+    bg = colors.heading_bg[idx],
+    bold = true,
+  })
+end
+
+vim.api.nvim_set_hl(0, "@markup.raw.markdown_inline", {
+  bg = colors.code_inline_bg,
+})
+
+vim.api.nvim_set_hl(0, "@markup.raw", {
+  bg = colors.code_block_bg,
+})
 
 local type_groups = {
   "Type", "@type", "@type.builtin", "@type.definition",
