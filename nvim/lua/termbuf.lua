@@ -265,7 +265,7 @@ M.setup = function(config)
 	M.prompts = config.prompts
 		or {
 			-- space needs to be included!!!
-			[".*[$#%%][ ]"] = {},
+			[".*[$#%][ ]"] = {},
 			["%(%gdb%)[ ]"] = {},
 			["^ghci>%s"] = {},
 			-- todo
