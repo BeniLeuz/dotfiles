@@ -5,8 +5,8 @@ local colors = {
   keyword = "#FFCF70",   -- for @keyword
   string = "#B2DC7E",    -- for @string
   comment = "#5C6370",   -- for @comment
-  code_inline_bg = "#181818",
-  code_block_bg = "#181818",
+  code_inline_bg = "#1a1a1a",
+  code_block_bg = "#1a1a1a",
   -- stuff for readmes etc
   -- old dont change
   heading_bg = { "#1f2335", "#24283b", "#2f3549", "#30324a", "#2d3144", "#272b3b" },
