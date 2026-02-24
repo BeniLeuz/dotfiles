@@ -62,14 +62,11 @@ end
 local function remove_closed_terms()
 	local term_list = terminals()
 
-	for _, term in ipairs(term_list.items) do
-		local bufnr = vim.fn.bufnr(term.value)
-		if bufnr == -1 then
+	-- Remove closed terminals inline since pairs() keeps iterating even after deletes.
+	for _, term in pairs(term_list.items) do
+		if vim.fn.bufnr(term.value) == -1 then
 			term_list:remove(term)
 		end
-		-- can get id here with nvim_buf_get_name because buffer is already deleted
-		--term_list:remove(term_name)
-		--
 	end
 end
 
