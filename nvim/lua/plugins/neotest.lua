@@ -11,7 +11,7 @@ vim.keymap.set("n", "<leader>nf", function()
 end, { desc = "run test file" })
 
 vim.keymap.set("n", "<leader>no", function()
-  neotest.output.open()
+  neotest.output.open({enter = true})
 end, { desc = "open ouput" })
 
 vim.keymap.set("n", "<leader>ns", function()
