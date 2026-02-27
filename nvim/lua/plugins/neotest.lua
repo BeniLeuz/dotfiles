@@ -11,14 +11,18 @@ vim.keymap.set("n", "<leader>nf", function()
 end, { desc = "run test file" })
 
 vim.keymap.set("n", "<leader>no", function()
-	neotest.output_panel.open({ short = false, enter = true })
-end, { desc = "open ouput" })
+	local buf = require("neotest").output_panel.buffer()
+	if buf then
+		vim.api.nvim_set_current_buf(buf)
+    vim.cmd("keepjumps normal! G")
+	end
+end)
 
 vim.keymap.set("n", "<leader>ns", function()
 	neotest.summary.toggle()
 end, { desc = "Open test summary" })
 
-require("neotest").setup({
+neotest.setup({
 	icons = {
 		child_indent = "│",
 		child_prefix = "├",
@@ -37,13 +41,8 @@ require("neotest").setup({
 		watching = "W",
 	},
 	adapters = {
-		require("neotest-java")({
-			jvm_args = {
-				"-Djunit.platform.output.capture.stdout=true",
-				"-Djunit.platform.output.capture.stderr=true",
-			},
-		}),
-    -- c#
+		require("neotest-java")({}),
+		-- c#
 		-- this literally BREAKS alt-t terminal behavior because it always loads?????
 		-- require("neotest-vstest"),
 		-- mark tests
