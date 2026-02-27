@@ -14,7 +14,7 @@ vim.keymap.set("n", "<leader>no", function()
 	local buf = require("neotest").output_panel.buffer()
 	if buf then
 		vim.api.nvim_set_current_buf(buf)
-    vim.cmd("keepjumps normal! G")
+		vim.cmd("keepjumps normal! G")
 	end
 end)
 
@@ -50,5 +50,8 @@ neotest.setup({
 		-- also nice to have for recompile in terminal just run this:
 		-- find folder | entr -c make or cmake
 		require("neotest-gtest").setup({}),
+	},
+	summary = {
+		open = "botright vsplit | vertical resize 40", -- pick any resize you want
 	},
 })
