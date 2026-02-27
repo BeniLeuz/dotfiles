@@ -37,7 +37,10 @@ require("neotest").setup({
     watching = "W"
   },
   adapters = {
+    -- c#
     require("neotest-java")({}),
+    -- this literally BREAKS alt-t terminal behavior because it always loads????? 
+    -- require("neotest-vstest"),
     -- mark tests
     -- then :ConfigureGtest
     -- also nice to have for recompile in terminal just run this:

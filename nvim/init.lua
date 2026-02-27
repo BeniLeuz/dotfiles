@@ -15,6 +15,7 @@ vim.pack.add({
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/tpope/vim-fugitive" },
+	{ src = "https://github.com/iamcco/markdown-preview.nvim" },
 	-- neotest
 	-- INFO: needs to be ran to download junit console
 	-- :NeotestJava setup
@@ -26,8 +27,8 @@ vim.pack.add({
 	{ src = "https://github.com/rcarriga/nvim-dap-ui" },
 	{ src = "https://github.com/theHamsta/nvim-dap-virtual-text" },
 	{ src = "https://github.com/rcasia/neotest-java" },
+	{ src = "https://github.com/nsidorenco/neotest-vstest" },
 	{ src = "https://github.com/nvim-neotest/neotest" },
-	{ src = "https://github.com/iamcco/markdown-preview.nvim" },
 })
 
 -- vim.o.shell = '/bin/bash -l'
