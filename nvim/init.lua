@@ -16,6 +16,8 @@ vim.pack.add({
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/tpope/vim-fugitive" },
 	{ src = "https://github.com/iamcco/markdown-preview.nvim" },
+  -- specifically for c# to have better language support
+	{ src = "https://github.com/seblyng/roslyn.nvim" },
 	-- neotest
 	-- INFO: needs to be ran to download junit console
 	-- :NeotestJava setup
