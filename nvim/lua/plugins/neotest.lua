@@ -11,7 +11,7 @@ vim.keymap.set("n", "<leader>nf", function()
 end, { desc = "run test file" })
 
 vim.keymap.set("n", "<leader>no", function()
-	local buf = require("neotest").output_panel.buffer()
+	local buf = neotest.output_panel.buffer()
 	if buf then
 		vim.api.nvim_set_current_buf(buf)
 		vim.cmd("keepjumps normal! G")
