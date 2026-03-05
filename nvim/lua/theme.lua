@@ -4,6 +4,7 @@ local colors = {
   function_ = "#729FCF", -- for @function
   keyword = "#FFCF70",   -- for @keyword
   string = "#B2DC7E",    -- for @string
+  constant = "#B2DC7E",    -- for @constant
   comment = "#5C6370",   -- for @comment
   code_inline_bg = "#1a1a1a",
   code_block_bg = "#1a1a1a",
@@ -75,6 +76,8 @@ vim.api.nvim_set_hl(0, "@lsp.type.modifier.java", { fg = colors.keyword })
 vim.api.nvim_set_hl(0, "Keyword", { fg = colors.keyword })
 vim.api.nvim_set_hl(0, "Function", { fg = colors.function_ })
 vim.api.nvim_set_hl(0, "String", { fg = colors.string })
+vim.api.nvim_set_hl(0, "@character", { fg = colors.constant })
+vim.api.nvim_set_hl(0, "@character.special", { fg = colors.constant })
 
 -- make it all black lmao
 vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
