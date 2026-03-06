@@ -1,36 +1,36 @@
 vim.pack.add({
-  { src = "https://github.com/barreiroleo/ltex_extra.nvim",             version = "dev" },
-  { src = "https://github.com/habamax/vim-polar" },
-  { src = "https://github.com/nvim-lua/plenary.nvim" },
-  { src = "https://github.com/ThePrimeagen/harpoon",                    version = "harpoon2" },
-  { src = "https://github.com/nvim-treesitter/nvim-treesitter",         version = "master" },
-  { src = "https://github.com/nvim-telescope/telescope.nvim" },
-  { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
-  { src = "https://github.com/junegunn/fzf" },
-  { src = "https://github.com/ibhagwan/fzf-lua" },
-  { src = "https://github.com/stevearc/oil.nvim" },
-  { src = "https://github.com/rafamadriz/friendly-snippets" },
-  { src = "https://github.com/Saghen/blink.cmp",                        version = "8a85527" },
-  { src = "https://github.com/neovim/nvim-lspconfig" },
-  { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
-  { src = "https://github.com/mason-org/mason.nvim" },
-  { src = "https://github.com/tpope/vim-fugitive" },
-  { src = "https://github.com/iamcco/markdown-preview.nvim" },
-  -- specifically for c# to have better language support
-  { src = "https://github.com/seblyng/roslyn.nvim" },
-  -- neotest
-  -- INFO: needs to be ran to download junit console
-  -- :NeotestJava setup
-  { src = "https://github.com/nvim-neotest/nvim-nio" },
-  { src = "https://github.com/antoinemadec/FixCursorHold.nvim" },
-  { src = "https://github.com/alfaix/neotest-gtest" },
-  { src = "https://github.com/mfussenegger/nvim-jdtls" },
-  { src = "https://github.com/mfussenegger/nvim-dap" },
-  { src = "https://github.com/rcarriga/nvim-dap-ui" },
-  { src = "https://github.com/theHamsta/nvim-dap-virtual-text" },
-  { src = "https://github.com/rcasia/neotest-java" },
-  { src = "https://github.com/nsidorenco/neotest-vstest" },
-  { src = "https://github.com/nvim-neotest/neotest" },
+	{ src = "https://github.com/barreiroleo/ltex_extra.nvim", version = "dev" },
+	{ src = "https://github.com/habamax/vim-polar" },
+	{ src = "https://github.com/nvim-lua/plenary.nvim" },
+	{ src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "master" },
+	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
+	{ src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
+	{ src = "https://github.com/junegunn/fzf" },
+	{ src = "https://github.com/ibhagwan/fzf-lua" },
+	{ src = "https://github.com/stevearc/oil.nvim" },
+	{ src = "https://github.com/rafamadriz/friendly-snippets" },
+	{ src = "https://github.com/Saghen/blink.cmp", version = "8a85527" },
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
+	{ src = "https://github.com/mason-org/mason.nvim" },
+	{ src = "https://github.com/tpope/vim-fugitive" },
+	{ src = "https://github.com/iamcco/markdown-preview.nvim" },
+	-- specifically for c# to have better language support
+	{ src = "https://github.com/seblyng/roslyn.nvim" },
+	-- neotest
+	-- INFO: needs to be ran to download junit console
+	-- :NeotestJava setup
+	{ src = "https://github.com/nvim-neotest/nvim-nio" },
+	{ src = "https://github.com/antoinemadec/FixCursorHold.nvim" },
+	{ src = "https://github.com/alfaix/neotest-gtest" },
+	{ src = "https://github.com/mfussenegger/nvim-jdtls" },
+	{ src = "https://github.com/mfussenegger/nvim-dap" },
+	{ src = "https://github.com/rcarriga/nvim-dap-ui" },
+	{ src = "https://github.com/theHamsta/nvim-dap-virtual-text" },
+	{ src = "https://github.com/rcasia/neotest-java" },
+	{ src = "https://github.com/nsidorenco/neotest-vstest" },
+	{ src = "https://github.com/nvim-neotest/neotest" },
 })
 
 -- vim.o.shell = '/bin/bash -l'
