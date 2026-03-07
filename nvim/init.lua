@@ -22,7 +22,6 @@ vim.pack.add({
 	-- INFO: needs to be ran to download junit console
 	-- :NeotestJava setup
 	{ src = "https://github.com/nvim-neotest/nvim-nio" },
-	{ src = "https://github.com/antoinemadec/FixCursorHold.nvim" },
 	{ src = "https://github.com/alfaix/neotest-gtest" },
 	{ src = "https://github.com/mfussenegger/nvim-jdtls" },
 	{ src = "https://github.com/mfussenegger/nvim-dap" },
