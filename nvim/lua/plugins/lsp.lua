@@ -19,6 +19,22 @@ vim.lsp.config("ltex_plus", {
 	},
 })
 
+local mason_registry = os.getenv("MASON") .. "/share"
+
+-- make sure to install jdlts and java-debug-adapter in mason!
+vim.lsp.config("jdtls", {
+	init_options = {
+		bundles = {
+			vim.fn.glob(mason_registry .. "/java-debug-adapter/com.microsoft.java.debug.plugin-*.jar"),
+		},
+	},
+	-- settings = {
+	-- 	java = {
+  -- 	  eclipse jdtls specific flags
+	-- 	},
+	-- },
+})
+
 vim.lsp.enable("ltex_plus", false)
 
 vim.keymap.set("n", "<leader>cs", function()
@@ -57,11 +73,11 @@ vim.lsp.config("clangd", {
 			"-std=c99",
 			"-i../include/",
 			"-i./include/",
-      "-pendantic",
-      "-pendantic-errors",
-      "-Werror",
-      "-Wall",
-      "-Wextra"
+			"-pendantic",
+			"-pendantic-errors",
+			"-Werror",
+			"-Wall",
+			"-Wextra",
 		},
 	},
 })

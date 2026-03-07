@@ -41,4 +41,14 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.keymap.set("n", "<leader>sf", FzfLua.files, { desc = "[S]earch [F]iles" })
-vim.keymap.set("n", "<leader>sg", FzfLua.live_grep_native, { desc = "[S]earch by [G]rep" })
+
+-- keep the grep search completely normal... without regex default atleast!
+vim.keymap.set("n", "<leader>sg", function()
+	local rg_opts = require("fzf-lua.config").globals.grep.rg_opts
+	FzfLua.live_grep_native({
+		rg_opts = "--fixed-strings " .. rg_opts,
+	})
+end, { desc = "[S]earch by [G]rep (literal)" })
+
+-- this has regex support!
+vim.keymap.set("n", "<leader>sG", FzfLua.live_grep_native, { desc = "[S]earch by [G]rep (regex)" })

@@ -66,6 +66,7 @@ require("plugins.ltex")
 require("plugins.git")
 require("plugins.markdown-preview")
 require("plugins.neotest")
+require("plugins.debug")
 require("termbuf").setup({})
 -- for printing
 -- vim.cmd("colorscheme polar");
