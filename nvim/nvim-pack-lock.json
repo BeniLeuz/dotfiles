@@ -5,20 +5,19 @@
       "src": "https://github.com/antoinemadec/FixCursorHold.nvim"
     },
     "blink.cmp": {
-      "rev": "327fff91fe6af358e990be7be1ec8b78037d2138",
-      "src": "https://github.com/Saghen/blink.cmp",
-      "version": "'8a85527'"
+      "rev": "4b18c32",
+      "version": "'v1.9.1'"
     },
     "friendly-snippets": {
       "rev": "6cd7280",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf": {
-      "rev": "260d160",
+      "rev": "92bfe68",
       "src": "https://github.com/junegunn/fzf"
     },
     "fzf-lua": {
-      "rev": "b56cd2f",
+      "rev": "1eba927",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "harpoon": {
@@ -56,7 +55,7 @@
       "src": "https://github.com/alfaix/neotest-gtest"
     },
     "neotest-java": {
-      "rev": "9f5cf2e",
+      "rev": "a758fea",
       "src": "https://github.com/rcasia/neotest-java"
     },
     "neotest-vstest": {
@@ -64,12 +63,16 @@
       "src": "https://github.com/nsidorenco/neotest-vstest"
     },
     "nvim-dap": {
-      "rev": "b516f20",
+      "rev": "a9d8cb6",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-ui": {
       "rev": "cf91d5e2d07c72903d052f5207511bf7ecdb7122",
       "src": "https://github.com/rcarriga/nvim-dap-ui"
+    },
+    "nvim-dap-view": {
+      "rev": "4f90690",
+      "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-dap-virtual-text": {
       "rev": "fbdb48c2ed45f4a8293d0d483f7730d24467ccb6",
@@ -80,7 +83,7 @@
       "src": "https://github.com/mfussenegger/nvim-jdtls"
     },
     "nvim-lspconfig": {
-      "rev": "ead0f5f",
+      "rev": "2163c54",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -121,7 +124,7 @@
       "src": "https://github.com/habamax/vim-polar"
     },
     "vimtex": {
-      "rev": "fcd15338",
+      "rev": "82d2305f",
       "src": "https://github.com/lervag/vimtex"
     }
   }
