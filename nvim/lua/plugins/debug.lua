@@ -37,7 +37,7 @@ vim.keymap.set("n", "<leader>dc", function()
 		dap.continue()
 		return
 	end
-	vim.notify("Debuggee is running. Use <F6> to pause or <S-F5> to stop.", vim.log.levels.INFO)
+	vim.notify("Debuggee is running. Use leader dt to stop", vim.log.levels.INFO)
 end, { desc = "Debug start/continue" })
 
 vim.keymap.set("n", "<leader>dt", function()
@@ -47,3 +47,26 @@ end, { desc = "Debug stop" })
 vim.keymap.set("n", "<leader>dr", function()
 	dap.repl.open()
 end, { desc = "Debug REPL open" })
+
+require("dap-view").setup({
+	winbar = {
+		sections = { "watches", "scopes", "exceptions", "breakpoints", "threads", "repl", "console" },
+		default_section = "watches",
+    base_sections = {
+      watches = { label = "", keymap = "W" },
+      scopes = { label = "", keymap = "S" },
+      exceptions = { label = "", keymap = "E" },
+      breakpoints = { label = "", keymap = "B" },
+      threads = { label = "", keymap = "T" },
+      repl = { label = "", keymap = "R" },
+      console = { label = "", keymap = "C" },
+      -- getting merged weith rest :)
+      -- sessions = { label = "", keymap = "K" },
+    },
+	},
+	auto_toggle = true,
+	windows = {
+		position = "right",
+		size = 0.50,
+	},
+})
