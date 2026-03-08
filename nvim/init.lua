@@ -28,7 +28,8 @@ vim.pack.add({
 	{ src = "https://github.com/igorlfs/nvim-dap-view" },
 	{ src = "https://github.com/theHamsta/nvim-dap-virtual-text" },
 	{ src = "https://github.com/rcasia/neotest-java" },
-	{ src = "https://github.com/nsidorenco/neotest-vstest" },
+  -- c# tests
+	{ src = "https://github.com/Issafalcon/neotest-dotnet" },
 	{ src = "https://github.com/nvim-neotest/neotest" },
 })
 
