@@ -49,10 +49,10 @@ neotest.setup({
 		-- then :ConfigureGtest
 		-- also nice to have for recompile in terminal just run this:
 		-- find folder | entr -c make or cmake
-    require("neotest-vstest"),
+    require("neotest-dotnet"),
 		require("neotest-gtest").setup({}),
 	},
 	summary = {
-		open = "botright vsplit | vertical resize 40", -- pick any resize you want
+		open = "botright vsplit | vertical resize 40",
 	},
 })
