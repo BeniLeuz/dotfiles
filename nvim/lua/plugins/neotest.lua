@@ -49,7 +49,7 @@ neotest.setup({
 		-- then :ConfigureGtest
 		-- also nice to have for recompile in terminal just run this:
 		-- find folder | entr -c make or cmake
-    require("neotest-dotnet"),
+    require("neotest-vstest"),
 		require("neotest-gtest").setup({}),
 	},
 	summary = {
