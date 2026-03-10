@@ -1,5 +1,10 @@
 local neotest = require("neotest")
 
+-- else this freezes stuff lol
+vim.g.neotest_vstest = {
+  broad_recursive_discovery = false,
+}
+
 -- run nearest
 vim.keymap.set("n", "<leader>nn", function()
 	neotest.run.run()
@@ -42,14 +47,11 @@ neotest.setup({
 	},
 	adapters = {
 		require("neotest-java")({}),
-		-- c#
-		-- this literally BREAKS alt-t terminal behavior because it always loads?????
-		-- require("neotest-vstest"),
+    require("neotest-vstest"),
 		-- mark tests
 		-- then :ConfigureGtest
 		-- also nice to have for recompile in terminal just run this:
 		-- find folder | entr -c make or cmake
-    require("neotest-dotnet"),
 		require("neotest-gtest").setup({}),
 	},
 	summary = {

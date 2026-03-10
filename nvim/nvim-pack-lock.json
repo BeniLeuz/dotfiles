@@ -13,11 +13,11 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf": {
-      "rev": "92bfe68",
+      "rev": "b59f27e",
       "src": "https://github.com/junegunn/fzf"
     },
     "fzf-lua": {
-      "rev": "1eba927",
+      "rev": "d9508cc",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "harpoon": {
@@ -64,7 +64,7 @@
     },
     "neotest-vstest": {
       "rev": "0bf64ea",
-      "src": "https://github.com/nsidorenco/neotest-vstest"
+      "src": "https://github.com/BeniLeuz/neotest-vstest"
     },
     "nvim-dap": {
       "rev": "a9d8cb6",
@@ -87,7 +87,7 @@
       "src": "https://github.com/mfussenegger/nvim-jdtls"
     },
     "nvim-lspconfig": {
-      "rev": "2163c54",
+      "rev": "d8bf4c4",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -120,7 +120,7 @@
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "vim-fugitive": {
-      "rev": "61b51c0",
+      "rev": "3b753cf",
       "src": "https://github.com/tpope/vim-fugitive"
     },
     "vim-polar": {
