@@ -16,6 +16,7 @@ vim.pack.add({
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/tpope/vim-fugitive" },
 	{ src = "https://github.com/iamcco/markdown-preview.nvim" },
+	{ src = "https://github.com/carlos-algms/agentic.nvim" },
 	-- specifically for c# to have better language support
 	{ src = "https://github.com/seblyng/roslyn.nvim" },
 	-- neotest
@@ -28,7 +29,7 @@ vim.pack.add({
 	{ src = "https://github.com/igorlfs/nvim-dap-view" },
 	{ src = "https://github.com/theHamsta/nvim-dap-virtual-text" },
 	{ src = "https://github.com/rcasia/neotest-java" },
-  -- c# tests
+	-- c# tests
 	{ src = "https://github.com/BeniLeuz/neotest-vstest" },
 	{ src = "https://github.com/nvim-neotest/neotest" },
 })
@@ -68,6 +69,25 @@ require("plugins.markdown-preview")
 require("plugins.neotest")
 require("plugins.debug")
 require("termbuf").setup({})
+-- pretty interesting to play around with but not for now i think..
+-- require("agentic").setup({
+-- 	provider = "codex-acp",
+-- 	windows = {
+-- 		position = "right",
+-- 		width = "100%",
+-- 	},
+-- })
+--
+-- local agentic = require("agentic")
+--
+-- vim.keymap.set({ "n" }, "<leader>l", function()
+-- 	agentic.toggle()
+-- end)
+--
+-- vim.keymap.set({ "n", "v", "i" }, "<C-'>", function()
+-- 	require("agentic").restore_session()
+-- end)
+
 -- for printing
 -- vim.cmd("colorscheme polar");
 --
