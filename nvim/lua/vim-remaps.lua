@@ -101,3 +101,11 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("n", "q", "<Nop>", { buffer = args.buf, silent = true })
 	end,
 })
+
+-- this will highlight direkt yanking so we can try to get better at yanking without visual
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	callback = function()
+		vim.hl.on_yank({ on_visual = false })
+	end,
+})
