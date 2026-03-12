@@ -15,6 +15,19 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+local function close_window_without_closing_tab()
+	if #vim.api.nvim_tabpage_list_wins(0) == 1 then
+		vim.api.nvim_echo({ { "E444: Cannot close last window", "ErrorMsg" } }, true, { err = true })
+		return
+	end
+
+	vim.cmd("close")
+end
+
+-- make sure the last windows in a tab will never close! (used for projectionizer and project per tab workflow)
+vim.keymap.set("n", "<C-w>c", close_window_without_closing_tab, { desc = "Close window" })
+vim.keymap.set("n", "<C-w><C-c>", close_window_without_closing_tab, { desc = "Close window" })
+
 -- copy logics
 -- vim.keymap.set('n', 'd', "\"_d")
 -- vim.keymap.set('x', 'p', "\"_dP")
