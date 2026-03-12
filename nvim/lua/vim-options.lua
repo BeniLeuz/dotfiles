@@ -46,3 +46,6 @@ vim.diagnostic.config({
     severity = vim.diagnostic.severity.ERROR
   },
 })
+
+-- rather would use 
+vim.b.man_default_sects = "3,2,3p"

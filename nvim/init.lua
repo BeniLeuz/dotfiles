@@ -4,8 +4,8 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "master" },
-	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
-	{ src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
+	-- { src = "https://github.com/nvim-telescope/telescope.nvim" },
+	-- { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
 	{ src = "https://github.com/junegunn/fzf" },
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
@@ -57,11 +57,11 @@ require("projectionizer")
 require("commandwindow")
 require("plugins.harpoon")
 require("plugins.treesitter")
-require("plugins.telescope")
 require("plugins.git")
 require("plugins.oil")
 require("plugins.autocomplete")
 require("plugins.fzf")
+-- require("plugins.telescope")
 require("plugins.lsp")
 require("plugins.ltex")
 require("plugins.git")

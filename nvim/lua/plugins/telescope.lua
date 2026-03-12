@@ -27,3 +27,4 @@ require("telescope").load_extension("fzf")
 
 vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>sm', builtin.man_pages, { desc = 'search man pages' })
