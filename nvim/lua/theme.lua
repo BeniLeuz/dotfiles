@@ -1,10 +1,10 @@
 local colors = {
 	type = "#ffffff", -- for @type
 	variable = "#c7c0b5", -- for @variable
-	function_ = "#746d64", -- for @function
+	function_ = "#6f706e", -- for @function
 	keyword = "#a79f94", -- for @keyword
-	string = "#B2DC7E", -- for @string
-	constant = "#B2DC7E", -- for @constant
+	string = "#879d73", -- for @string
+	constant = "#879d73", -- for @constant
 	comment = "#5C6370", -- for @comment
 	code_inline_bg = "#1a1a1a",
 	code_block_bg = "#1a1a1a",
