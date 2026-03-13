@@ -1,8 +1,8 @@
 local colors = {
-  type = "#ffffff",      -- for @type
-  variable = "#cfc7bb",  -- for @variable
-  function_ = "#e7b37a", -- for @function
-  keyword = "#7a7a78",   -- for @keyword
+  type = "#8c867d",      -- for @type
+  variable = "#c2bcb2",  -- for @variable
+  function_ = "#ffffff", -- for @function
+  keyword = "#5b5b57",   -- for @keyword
   string = "#B2DC7E",    -- for @string
   constant = "#B2DC7E",    -- for @constant
   comment = "#5C6370",   -- for @comment
