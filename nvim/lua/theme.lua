@@ -1,70 +1,81 @@
 local colors = {
-  type = "#ffffff",      -- for @type
-  variable = "#c7c0b5",  -- for @variable
-  function_ = "#746d64", -- for @function
-  keyword = "#a79f94",   -- for @keyword
-  string = "#B2DC7E",    -- for @string
-  constant = "#B2DC7E",    -- for @constant
-  comment = "#5C6370",   -- for @comment
-  code_inline_bg = "#1a1a1a",
-  code_block_bg = "#1a1a1a",
-  -- stuff for readmes etc
-  -- old dont change
-  heading_bg = { "#1f2335", "#24283b", "#2f3549", "#30324a", "#2d3144", "#272b3b" },
-  heading_fg = { "#f7768e", "#ff9e64", "#e0af68", "#9ece6a", "#7dcfff", "#bb9af7" },
+	type = "#ffffff", -- for @type
+	variable = "#c7c0b5", -- for @variable
+	function_ = "#746d64", -- for @function
+	keyword = "#a79f94", -- for @keyword
+	string = "#B2DC7E", -- for @string
+	constant = "#B2DC7E", -- for @constant
+	comment = "#5C6370", -- for @comment
+	code_inline_bg = "#1a1a1a",
+	code_block_bg = "#1a1a1a",
+	-- stuff for readmes etc
+	-- old dont change
+	heading_bg = { "#1f2335", "#24283b", "#2f3549", "#30324a", "#2d3144", "#272b3b" },
+	heading_fg = { "#f7768e", "#ff9e64", "#e0af68", "#9ece6a", "#7dcfff", "#bb9af7" },
 }
 
+vim.api.nvim_set_hl(0, "Visual", { bg = "#222222" })
+
 local markdown_headings = {
-  "@markup.heading.1.markdown",
-  "@markup.heading.2.markdown",
-  "@markup.heading.3.markdown",
-  "@markup.heading.4.markdown",
-  "@markup.heading.5.markdown",
-  "@markup.heading.6.markdown",
+	"@markup.heading.1.markdown",
+	"@markup.heading.2.markdown",
+	"@markup.heading.3.markdown",
+	"@markup.heading.4.markdown",
+	"@markup.heading.5.markdown",
+	"@markup.heading.6.markdown",
 }
 
 for idx, group in ipairs(markdown_headings) do
-  vim.api.nvim_set_hl(0, group, {
-    fg = colors.heading_fg[idx],
-    bg = colors.heading_bg[idx],
-    bold = true,
-  })
+	vim.api.nvim_set_hl(0, group, {
+		fg = colors.heading_fg[idx],
+		bg = colors.heading_bg[idx],
+		bold = true,
+	})
 end
 
 vim.api.nvim_set_hl(0, "@markup.raw.markdown_inline", {
-  bg = colors.code_inline_bg,
+	bg = colors.code_inline_bg,
 })
 
 vim.api.nvim_set_hl(0, "@markup.raw", {
-  bg = colors.code_block_bg,
+	bg = colors.code_block_bg,
 })
 
 local markdown_code_groups = {
-  "markdownCode",
-  "markdownCodeBlock",
-  "markdownCodeDelimiter",
+	"markdownCode",
+	"markdownCodeBlock",
+	"markdownCodeDelimiter",
 }
 
 for _, group in ipairs(markdown_code_groups) do
-  vim.api.nvim_set_hl(0, group, { bg = colors.code_block_bg })
+	vim.api.nvim_set_hl(0, group, { bg = colors.code_block_bg })
 end
 
 local type_groups = {
-  "Type", "@type", "@type.builtin", "@type.definition",
-  "@type.qualifier", "@namespace"
+	"Type",
+	"@type",
+	"@type.builtin",
+	"@type.definition",
+	"@type.qualifier",
+	"@namespace",
 }
 
 local var_groups = {
-  "@variable", "@variable.builtin", "@variable.local",
-  "@parameter", "@property", "@field", "@identifier"
+	"@variable",
+	"@variable.builtin",
+	"@variable.local",
+	"@parameter",
+	"@property",
+	"@field",
+	"@identifier",
 }
 
 for _, group in ipairs(type_groups) do
-  vim.api.nvim_set_hl(0, group, { fg = colors.type })
+	vim.api.nvim_set_hl(0, group, { fg = colors.type })
 end
 
 for _, group in ipairs(var_groups) do
-  vim.api.nvim_set_hl(0, group, { fg = colors.variable })
+	vim.api.nvim_set_hl(0, group, { fg = colors.variable })
 end
 
 -- html tag
@@ -98,39 +109,38 @@ vim.api.nvim_set_hl(0, "TabLine", { bg = "#000000", fg = "#ffffff" })
 vim.api.nvim_set_hl(0, "TabLineSel", { bg = "#ffffff", fg = "#000000", bold = true })
 vim.api.nvim_set_hl(0, "TabLineFill", { bg = "#000000" })
 
-
 -- statusline (works because i set highlight groups in vimopts)
-vim.api.nvim_set_hl(0, "StatusLine", { fg = "#ffffff", bg = "#000000" })       -- white text on black
-vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "#ffffff", bg = "#000000" })       -- when inactive so quikcfix
-vim.api.nvim_set_hl(0, "StatusModified", { fg = "#ffffff", bg = "#000000" })   -- orange on black
-vim.api.nvim_set_hl(0, "StatusRO", { fg = "#ffffff", bg = "#000000" })   -- orange on black
+vim.api.nvim_set_hl(0, "StatusLine", { fg = "#ffffff", bg = "#000000" }) -- white text on black
+vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "#ffffff", bg = "#000000" }) -- when inactive so quikcfix
+vim.api.nvim_set_hl(0, "StatusModified", { fg = "#ffffff", bg = "#000000" }) -- orange on black
+vim.api.nvim_set_hl(0, "StatusRO", { fg = "#ffffff", bg = "#000000" }) -- orange on black
 
 function _G.custom_tabline()
-  local s = ""
-  for i = 1, vim.fn.tabpagenr("$") do
-    if i == vim.fn.tabpagenr() then
-      s = s .. "%#TabLineSel#"
-    else
-      s = s .. "%#TabLine#"
-    end
-    local cwd = vim.fn.getcwd(-1, i)
-    cwd = vim.fn.fnamemodify(cwd, ":t")
-    s = s .. " " .. cwd .. " "
-  end
+	local s = ""
+	for i = 1, vim.fn.tabpagenr("$") do
+		if i == vim.fn.tabpagenr() then
+			s = s .. "%#TabLineSel#"
+		else
+			s = s .. "%#TabLine#"
+		end
+		local cwd = vim.fn.getcwd(-1, i)
+		cwd = vim.fn.fnamemodify(cwd, ":t")
+		s = s .. " " .. cwd .. " "
+	end
 
-  -- Fill empty space and reset tab target
-  s = s .. "%#TabLineFill#"
-  return s
+	-- Fill empty space and reset tab target
+	s = s .. "%#TabLineFill#"
+	return s
 end
 
 vim.o.tabline = "%!v:lua.custom_tabline()"
 
 -- some fugitive styling
 vim.api.nvim_set_hl(0, "DiffDelete", {
-  bg = "#330000",
+	bg = "#330000",
 })
 
 vim.api.nvim_set_hl(0, "diffRemoved", { link = "DiffDelete" })
 vim.api.nvim_set_hl(0, "diffOldFile", { link = "DiffDelete" })
 vim.api.nvim_set_hl(0, "diffNewFile", { link = "DiffAdd" })
-vim.api.nvim_set_hl(0, "diffAdded", { link = "DiffAdd"})
+vim.api.nvim_set_hl(0, "diffAdded", { link = "DiffAdd" })
