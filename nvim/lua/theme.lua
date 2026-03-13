@@ -1,6 +1,6 @@
 local colors = {
 	type = "#ffffff", -- for @type
-	variable = "#c7c0b5", -- for @variable
+	variable = "#d0c8bd", -- for @variable
 	function_ = "#6f706e", -- for @function
 	keyword = "#a79f94", -- for @keyword
 	string = "#93aa7e", -- for @string
@@ -14,7 +14,7 @@ local colors = {
 	heading_fg = { "#f7768e", "#ff9e64", "#e0af68", "#9ece6a", "#7dcfff", "#bb9af7" },
 }
 
-vim.api.nvim_set_hl(0, "Visual", { bg = "#222222" })
+vim.api.nvim_set_hl(0, "Visual", { bg = "#2a2a2a" })
 
 local markdown_headings = {
 	"@markup.heading.1.markdown",
