@@ -52,7 +52,7 @@ vim.pack.add({
 -- vim.cmd("packadd nvim.difftool")
 require("vim-options")
 require("vim-remaps")
-require("theme")
+require("new_theme")
 require("projectionizer")
 require("commandwindow")
 require("plugins.harpoon")
