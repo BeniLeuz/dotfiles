@@ -1,4 +1,5 @@
 -- banger commands:
+-- Git mergetool
 -- diffin merges always remote left and local changes right
 -- Git difftool origin/dev..origin/cleanup-baby
 --
