@@ -16,7 +16,9 @@ vim.pack.add({
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/tpope/vim-fugitive" },
 	{ src = "https://github.com/iamcco/markdown-preview.nvim" },
-	{ src = "https://github.com/carlos-algms/agentic.nvim" },
+	{ src = "https://github.com/akinsho/toggleterm.nvim" },
+	{ src = "https://github.com/emrearmagan/dockyard.nvim" },
+	-- { src = "https://github.com/carlos-algms/agentic.nvim" },
 	-- specifically for c# to have better language support
 	{ src = "https://github.com/seblyng/roslyn.nvim" },
 	-- neotest
@@ -33,6 +35,19 @@ vim.pack.add({
 	{ src = "https://github.com/BeniLeuz/neotest-vstest" },
 	{ src = "https://github.com/nvim-neotest/neotest" },
 })
+
+require("toggleterm").setup()
+require("dockyard").setup()
+
+local terminal = require("dockyard.ui.views.terminal")
+local orig_open = terminal.open
+
+terminal.open = function(container_id, shell, ctx)
+	if shell == "sh" then
+		shell = "bash"
+	end
+	return orig_open(container_id, shell, ctx)
+end
 
 -- vim.o.shell = '/bin/bash -l'
 -- vim.g.clipboard = {
@@ -68,7 +83,12 @@ require("plugins.git")
 require("plugins.markdown-preview")
 require("plugins.neotest")
 require("plugins.debug")
-require("termbuf").setup({})
+require("termbuf").setup({
+	exclude = function(bufnr)
+		local name = vim.api.nvim_buf_get_name(bufnr)
+		return name:find("#toggleterm#") ~= nil and name:find("docker exec %-it ") ~= nil
+	end,
+})
 -- pretty interesting to play around with but not for now i think..
 -- require("agentic").setup({
 -- 	provider = "codex-acp",

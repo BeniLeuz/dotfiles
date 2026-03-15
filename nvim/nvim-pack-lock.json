@@ -12,6 +12,10 @@
       "rev": "4b18c32",
       "version": "'v1.9.1'"
     },
+    "dockyard.nvim": {
+      "rev": "e84ae97",
+      "src": "https://github.com/emrearmagan/dockyard.nvim"
+    },
     "friendly-snippets": {
       "rev": "6cd7280",
       "src": "https://github.com/rafamadriz/friendly-snippets"
@@ -122,6 +126,10 @@
     "telescope.nvim": {
       "rev": "5255aa2",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
+    "toggleterm.nvim": {
+      "rev": "9a88eae",
+      "src": "https://github.com/akinsho/toggleterm.nvim"
     },
     "vim-fugitive": {
       "rev": "3b753cf",

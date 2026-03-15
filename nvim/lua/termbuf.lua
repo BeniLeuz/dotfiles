@@ -1,5 +1,13 @@
 local M = {}
 
+local function get_buf_state(bufnr)
+	return M.buffers[bufnr]
+end
+
+local function is_excluded(bufnr)
+	return M.exclude ~= nil and M.exclude(bufnr)
+end
+
 -- todo: ciobject with empty object will just not work... callbacks ive tried to get cursor pos
 -- textyankpost, textchanged, modechanged, ci" override, modechangefunc or something like that
 -- all of the mwill not fire before termenter when doing empty "" i think i need to patch nvim core if i want
@@ -114,9 +122,13 @@ local function setup_cmds()
 		pattern = M.buf_pattern,
 		group = group,
 		callback = function(args)
+			local buf = get_buf_state(args.buf)
+			if buf == nil then
+				return
+			end
+
 			local start = vim.api.nvim_buf_get_mark(args.buf, "[")
 			local ent = vim.api.nvim_buf_get_mark(args.buf, "]")
-			local buf = M.buffers[args.buf]
 
 			-- this next part was written by ai take it with a grain of salt XD but it tapped
 			-- it so im keeping it for now todo: it does break on empty textyankpost like ci" on "" i think this never runs
@@ -153,7 +165,10 @@ local function setup_cmds()
 		pattern = M.buf_pattern,
 		group = group,
 		callback = function(args)
-			local buf = M.buffers[args.buf]
+			local buf = get_buf_state(args.buf)
+			if buf == nil then
+				return
+			end
 
 			if buf.prompt.col == nil then
 				return
@@ -167,7 +182,11 @@ local function setup_cmds()
 		pattern = M.buf_pattern,
 		group = group,
 		callback = function(args)
-			local buf = M.buffers[args.buf]
+			local buf = get_buf_state(args.buf)
+			if buf == nil then
+				return
+			end
+
 			local cursor = vim.api.nvim_win_get_cursor(0)
 			vim.api.nvim_win_set_cursor(0, cursor)
 			local line = vim.api.nvim_get_current_line()
@@ -189,7 +208,10 @@ local function setup_cmds()
 		pattern = M.buf_pattern,
 		group = group,
 		callback = function(args)
-			local buf = M.buffers[args.buf]
+			local buf = get_buf_state(args.buf)
+			if buf == nil then
+				return
+			end
 
 			if buf.prompt.row == nil or buf.prompt.col == nil then
 				return
@@ -204,7 +226,11 @@ local function setup_cmds()
 		pattern = M.buf_pattern,
 		group = group,
 		callback = function(args)
-			local buf = M.buffers[args.buf]
+			local buf = get_buf_state(args.buf)
+			if buf == nil then
+				return
+			end
+
 			local cur = vim.api.nvim_win_get_cursor(0)
       -- todo fix afte rexecution prompt being editable in <CR> callback thanks modifiable true
       -- and then into modifiable false needs to be simply set or maybe external state var
@@ -226,6 +252,10 @@ local function setup()
 		pattern = M.buf_pattern,
 		group = augr_term,
 		callback = function(args)
+			if is_excluded(args.buf) then
+				return
+			end
+
 			M.buffers[args.buf] = {
 				keybinds = M.default_keybinds,
 				prompt = {
@@ -254,6 +284,7 @@ end
 ---@class TermBufConfig
 ---@field prompts? {[string]: PromptOptions} Table of prompt patterns mapping to their options. Keys are Lua pattern strings that match terminal prompts (e.g., '.*[$#%%][ ]?')
 ---@field default_keybinds? Keybinds Default keybindings for your terminal
+---@field exclude? fun(bufnr: integer): boolean Predicate used to skip attaching termbuf to matching terminal buffers
 
 --- Set up the termbuf plugin with the configuration
 ---@param config TermBufConfig Configuration table for editable-term
@@ -262,6 +293,7 @@ M.setup = function(config)
 	-- this might not make sense since modifiable ruined on different command term outputs
 	M.buf_pattern = "term://*"
 	M.buffers = {}
+	M.exclude = config.exclude
 	M.prompts = config.prompts
 		or {
 			-- space needs to be included!!!
