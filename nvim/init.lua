@@ -36,18 +36,6 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-neotest/neotest" },
 })
 
-require("toggleterm").setup()
-require("dockyard").setup()
-
-local terminal = require("dockyard.ui.views.terminal")
-local orig_open = terminal.open
-
-terminal.open = function(container_id, shell, ctx)
-	if shell == "sh" then
-		shell = "bash"
-	end
-	return orig_open(container_id, shell, ctx)
-end
 
 -- vim.o.shell = '/bin/bash -l'
 -- vim.g.clipboard = {
@@ -83,6 +71,8 @@ require("plugins.git")
 require("plugins.markdown-preview")
 require("plugins.neotest")
 require("plugins.debug")
+require("plugins.dockyard")
+-- make sure to exclude dockyard toggleterm sh terms
 require("termbuf").setup({
 	exclude = function(bufnr)
 		local name = vim.api.nvim_buf_get_name(bufnr)
