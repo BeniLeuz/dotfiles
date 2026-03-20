@@ -8,6 +8,7 @@ vim.o.numberwidth = 1
 vim.o.number = true
 vim.o.relativenumber = true
 vim.g.mapleader = ' '
+vim.g.omni_sql_no_default_maps = 1
 vim.g.maplocalleader = ' '
 vim.o.statusline = "%#StatusLine#%F %#StatusModified#%m %#StatusRO#%r"
 vim.o.ruler = false
