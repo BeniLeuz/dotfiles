@@ -5,7 +5,7 @@
       "src": "https://github.com/antoinemadec/FixCursorHold.nvim"
     },
     "agentic.nvim": {
-      "rev": "b140d1b",
+      "rev": "cfa49d9",
       "src": "https://github.com/carlos-algms/agentic.nvim"
     },
     "blink.cmp": {
@@ -13,7 +13,7 @@
       "version": "'v1.9.1'"
     },
     "dockyard.nvim": {
-      "rev": "e84ae97",
+      "rev": "03b95cf",
       "src": "https://github.com/emrearmagan/dockyard.nvim"
     },
     "friendly-snippets": {
@@ -21,11 +21,11 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf": {
-      "rev": "b59f27e",
+      "rev": "1acf980",
       "src": "https://github.com/junegunn/fzf"
     },
     "fzf-lua": {
-      "rev": "d9508cc",
+      "rev": "3b01dc8",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "harpoon": {
@@ -47,7 +47,7 @@
       "src": "https://github.com/iamcco/markdown-preview.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "a324581",
+      "rev": "a979821",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason.nvim": {
@@ -55,7 +55,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "neotest": {
-      "rev": "deadfb1",
+      "rev": "b059824",
       "src": "https://github.com/nvim-neotest/neotest"
     },
     "neotest-dotnet": {
@@ -67,7 +67,7 @@
       "src": "https://github.com/alfaix/neotest-gtest"
     },
     "neotest-java": {
-      "rev": "a758fea",
+      "rev": "f08ee74",
       "src": "https://github.com/rcasia/neotest-java"
     },
     "neotest-vstest": {
@@ -79,11 +79,11 @@
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-ui": {
-      "rev": "cf91d5e2d07c72903d052f5207511bf7ecdb7122",
+      "rev": "f5b6673",
       "src": "https://github.com/rcarriga/nvim-dap-ui"
     },
     "nvim-dap-view": {
-      "rev": "4f90690",
+      "rev": "af144cf",
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-dap-virtual-text": {
@@ -95,7 +95,7 @@
       "src": "https://github.com/mfussenegger/nvim-jdtls"
     },
     "nvim-lspconfig": {
-      "rev": "d8bf4c4",
+      "rev": "46204c8",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -103,7 +103,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "42fc28ba918343ebfd5565147a42a26580579482",
+      "rev": "cf12346a",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'master'"
     },
@@ -116,7 +116,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "roslyn.nvim": {
-      "rev": "7deb9bb",
+      "rev": "ff43201",
       "src": "https://github.com/seblyng/roslyn.nvim"
     },
     "telescope-fzf-native.nvim": {
