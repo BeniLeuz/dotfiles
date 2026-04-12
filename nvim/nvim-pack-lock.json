@@ -56,7 +56,7 @@
       "src": "https://github.com/rcasia/neotest-java"
     },
     "neotest-vstest": {
-      "rev": "0bf64ea",
+      "rev": "8588c3c988c7ed49879dddf937b42681cfa7ce30",
       "src": "https://github.com/Nsidorenco/neotest-vstest"
     },
     "nvim-dap": {
