@@ -36,7 +36,6 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-neotest/neotest" },
 })
 
-
 -- vim.o.shell = '/bin/bash -l'
 -- vim.g.clipboard = {
 --     name = 'iTerm2 copy',
@@ -113,3 +112,10 @@ require("termbuf").setup({
 --   -- Send the git difftool command
 --   vim.fn.chansend(chan, 'git d -d ' .. remote_branch .. '\n')
 -- end, { desc = 'Git difftool vs upstream' })
+
+require("vim._core.ui2").enable({
+	enable = true,
+  msg = {
+    targets = "cmd"
+  }
+})
