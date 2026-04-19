@@ -122,3 +122,38 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.hl.on_yank({ on_visual = false })
 	end,
 })
+
+local function ensure_tab_scratch_buf()
+	local buf = vim.t.scratch_buf
+	if buf and vim.api.nvim_buf_is_valid(buf) then
+		return buf
+	end
+
+	buf = vim.api.nvim_create_buf(false, true)
+	vim.api.nvim_buf_set_name(buf, ("scratch://tab/%d"):format(vim.api.nvim_get_current_tabpage()))
+	vim.bo[buf].bufhidden = "hide"
+	vim.bo[buf].swapfile = false
+
+	vim.t.scratch_buf = buf
+	return buf
+end
+
+local function open_scratch_split()
+	local buf = ensure_tab_scratch_buf()
+
+	if vim.api.nvim_get_current_buf() == buf then
+		return
+	end
+
+	for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+		if vim.api.nvim_win_get_buf(win) == buf then
+			vim.api.nvim_set_current_win(win)
+			return
+		end
+	end
+
+	vim.cmd("new")
+	vim.api.nvim_win_set_buf(0, buf)
+end
+
+vim.keymap.set("n", "<C-w>n", open_scratch_split, { desc = "Open scratch window" })
