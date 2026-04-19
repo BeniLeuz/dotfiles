@@ -114,8 +114,5 @@ require("termbuf").setup({
 -- end, { desc = 'Git difftool vs upstream' })
 
 require("vim._core.ui2").enable({
-	enable = true,
-  msg = {
-    targets = "cmd"
-  }
+	enable = true
 })
