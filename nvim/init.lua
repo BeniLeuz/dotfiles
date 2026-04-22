@@ -18,6 +18,8 @@ vim.pack.add({
 	{ src = "https://github.com/iamcco/markdown-preview.nvim" },
 	{ src = "https://github.com/akinsho/toggleterm.nvim" },
 	{ src = "https://github.com/emrearmagan/dockyard.nvim" },
+  -- brew install imagemagick needs this
+	{ src = "https://github.com/folke/snacks.nvim" },
 	-- { src = "https://github.com/carlos-algms/agentic.nvim" },
 	-- specifically for c# to have better language support
 	{ src = "https://github.com/seblyng/roslyn.nvim" },
@@ -68,6 +70,7 @@ require("plugins.lsp")
 require("plugins.ltex")
 require("plugins.git")
 require("plugins.markdown-preview")
+require("plugins.images")
 require("plugins.neotest")
 require("plugins.debug")
 require("plugins.dockyard")

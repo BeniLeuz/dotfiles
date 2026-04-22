@@ -157,3 +157,15 @@ local function open_scratch_split()
 end
 
 vim.keymap.set("n", "<C-w>n", open_scratch_split, { desc = "Open scratch window" })
+
+-- remap for vim.pack uninstall inactive plugins...
+vim.keymap.set("n", "<leader>vpu", function()
+	vim.pack.del(vim.iter(vim.pack.get())
+		:filter(function(x)
+			return not x.active
+		end)
+		:map(function(x)
+			return x.spec.name
+		end)
+		:totable())
+end, { desc = "removes all inactive plugins from vim.pack" } )
