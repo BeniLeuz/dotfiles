@@ -18,6 +18,8 @@
 -- dp = diff put mine into other so like unchange stuff
 -- ]q[q = jump quickfix
 -- [c]c = jump hunks in same file
+-- ASYNC:
+-- use ctrl-d to detach current operation to async. can be nice when it takes a bit...
 
 -- overview
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
