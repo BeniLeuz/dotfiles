@@ -1,3 +1,4 @@
+test
 vim.pack.add({
 	{ src = "https://github.com/barreiroleo/ltex_extra.nvim", version = "dev" },
 	{ src = "https://github.com/habamax/vim-polar" },
