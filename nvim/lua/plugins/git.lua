@@ -21,6 +21,43 @@
 
 -- overview
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+
+local function git_async(args)
+  vim.cmd("Git! " .. args)
+end
+
+vim.keymap.set("n", "<leader>gP", function()
+  git_async("push")
+end, { desc = "Git push (async)" })
+
+vim.keymap.set("n", "<leader>gF", function()
+  git_async("fetch")
+end, { desc = "Git fetch (async)" })
+
+vim.keymap.set("n", "<leader>gL", function()
+  git_async("pull")
+end, { desc = "Git pull (async)" })
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "FugitiveIndex",
+  callback = function(args)
+    local opts = { buffer = args.buf, silent = true }
+
+    -- Fugitive's default P in the status buffer only pre-fills :Git push.
+    -- Override it here so it actually runs the async variant.
+    vim.keymap.set("n", "P", function()
+      git_async("push")
+    end, opts)
+
+    vim.keymap.set("n", "F", function()
+      git_async("fetch")
+    end, opts)
+
+    vim.keymap.set("n", "L", function()
+      git_async("pull")
+    end, opts)
+  end,
+})
 -- diff unstaged against working dir
 -- vim.keymap.set("n", "<leader>da", ":Git difftool -y<CR>")
 -- diff staged against head
