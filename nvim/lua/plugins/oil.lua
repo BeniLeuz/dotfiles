@@ -4,9 +4,11 @@ oil.setup({
 	view_options = {
 		show_hidden = true,
 	},
+  watch_for_changes = true,
 	keymaps = {
-		["<C-h>"] = {},
+    ["<C-h>"] = {},
 		["<leader>oc"] = "actions.copy_to_system_clipboard",
+    ["<C-l>"] = {},
 	},
 })
 
