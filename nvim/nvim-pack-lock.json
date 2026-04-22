@@ -26,10 +26,6 @@
       "src": "https://github.com/ThePrimeagen/harpoon",
       "version": "'harpoon2'"
     },
-    "image.nvim": {
-      "rev": "da2be65c153ba15a14a342b05591652a6df70d58",
-      "src": "https://github.com/3rd/image.nvim"
-    },
     "ltex_extra.nvim": {
       "rev": "7b2d278",
       "src": "https://github.com/barreiroleo/ltex_extra.nvim",
