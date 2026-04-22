@@ -4,5 +4,6 @@ if vim.fn.isdirectory(install_path) == 0 then
   vim.fn["mkdp#util#install"]()
 end
 
+vim.g.mkdp_auto_close = 0
 vim.keymap.set("n", "<leader>mp",":MarkdownPreview<CR>")
 

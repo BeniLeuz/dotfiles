@@ -14,6 +14,7 @@ vim.o.statusline = "%#StatusLine#%F %#StatusModified#%m %#StatusRO#%r"
 vim.o.ruler = false
 vim.o.showcmd = false
 vim.o.showmode = false
+vim.o.updatetime = 500
 
 -- this if i ever go back to cmdline 0 and also missing, search results btw
 -- vim.opt.statusline = "%#StatusLine#%F %#StatusModified#%m %#StatusRO#%r %=%{v:lua.macro_recording()}"
