@@ -18,7 +18,7 @@ vim.pack.add({
 	{ src = "https://github.com/iamcco/markdown-preview.nvim" },
 	{ src = "https://github.com/akinsho/toggleterm.nvim" },
 	{ src = "https://github.com/emrearmagan/dockyard.nvim" },
-  -- brew install imagemagick needs this
+	-- brew install imagemagick needs this
 	{ src = "https://github.com/folke/snacks.nvim" },
 	-- { src = "https://github.com/carlos-algms/agentic.nvim" },
 	-- specifically for c# to have better language support
@@ -115,3 +115,5 @@ require("termbuf").setup({
 --   -- Send the git difftool command
 --   vim.fn.chansend(chan, 'git d -d ' .. remote_branch .. '\n')
 -- end, { desc = 'Git difftool vs upstream' })
+
+require("vim._core.ui2").enable({})
