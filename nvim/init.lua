@@ -8,7 +8,7 @@ vim.pack.add({
 	-- { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
 	{ src = "https://github.com/junegunn/fzf" },
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
-	{ src = "https://github.com/stevearc/oil.nvim" },
+	{ src = "https://github.com/barrettruth/canola.nvim" },
 	{ src = "https://github.com/rafamadriz/friendly-snippets" },
 	{ src = "https://github.com/Saghen/blink.cmp", version = "v1.9.1" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },

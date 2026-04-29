@@ -5,6 +5,10 @@
       "src": "https://github.com/Saghen/blink.cmp",
       "version": "'v1.9.1'"
     },
+    "canola.nvim": {
+      "rev": "2a7155060f0667bd7d19c16c931295274059670d",
+      "src": "https://github.com/barrettruth/canola.nvim"
+    },
     "dockyard.nvim": {
       "rev": "7c446e6ee4f9f21b22b360752f752a4bfbaac24c",
       "src": "https://github.com/emrearmagan/dockyard.nvim"
@@ -87,10 +91,6 @@
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
-    },
-    "oil.nvim": {
-      "rev": "0fcc838",
-      "src": "https://github.com/stevearc/oil.nvim"
     },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
