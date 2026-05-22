@@ -16,7 +16,8 @@ oil.setup({
 	},
 	keymaps = {
 		["<C-h>"] = {},
-		["<leader>oc"] = "actions.copy_to_system_clipboard",
+		["<leader>oy"] = "actions.copy_to_system_clipboard",
+		["<leader>op"] = "actions.paste_from_system_clipboard",
 		["<C-l>"] = {},
 	},
 })
