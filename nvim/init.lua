@@ -16,6 +16,7 @@ vim.pack.add({
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/tpope/vim-fugitive" },
 	{ src = "https://github.com/iamcco/markdown-preview.nvim" },
+	{ src = "https://github.com/OXY2DEV/markview.nvim" },
 	{ src = "https://github.com/akinsho/toggleterm.nvim" },
 	{ src = "https://github.com/emrearmagan/dockyard.nvim" },
 	-- brew install imagemagick needs this
@@ -70,6 +71,7 @@ require("plugins.lsp")
 require("plugins.ltex")
 require("plugins.git")
 require("plugins.markdown-preview")
+require("plugins.markview")
 require("plugins.images")
 require("plugins.neotest")
 require("plugins.debug")
