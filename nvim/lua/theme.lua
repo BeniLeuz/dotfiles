@@ -40,6 +40,7 @@ vim.api.nvim_set_hl(0, "@markup.raw", {
 })
 
 vim.api.nvim_set_hl(0, "MarkviewCode", { bg = colors.code_block_bg })
+vim.api.nvim_set_hl(0, "MarkviewInlineCode", { link = "MarkviewCode" })
 vim.api.nvim_set_hl(0, "MarkviewCodeInfo", { bg = colors.code_block_bg })
 vim.api.nvim_set_hl(0, "MarkviewCodeFg", { fg = colors.code_block_bg })
 
