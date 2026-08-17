@@ -117,17 +117,12 @@ require("termbuf").setup({
 --   -- Send the git difftool command
 --   vim.fn.chansend(chan, 'git d -d ' .. remote_branch .. '\n')
 -- end, { desc = 'Git difftool vs upstream' })
-local ui2 = require("vim._core.ui2")
 
-if #vim.api.nvim_list_uis() > 0 then
-  ui2.enable({})
-else
-  vim.api.nvim_create_autocmd("UIEnter", {
-    once = true,
-    callback = function()
-      ui2.enable({})
-    end,
-  })
-end
-
-
+vim.api.nvim_create_autocmd("UIEnter", {
+	once = true,
+	callback = function()
+		vim.schedule(function()
+			require("vim._core.ui2").enable({})
+		end)
+	end,
+})
