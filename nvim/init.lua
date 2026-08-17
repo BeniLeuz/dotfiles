@@ -119,10 +119,14 @@ require("termbuf").setup({
 -- end, { desc = 'Git difftool vs upstream' })
 
 vim.api.nvim_create_autocmd("UIEnter", {
-	once = true,
 	callback = function()
 		vim.schedule(function()
+			if vim.g.ui2_enabled or #vim.api.nvim_list_uis() == 0 then
+				return
+			end
+
 			require("vim._core.ui2").enable({})
+			vim.g.ui2_enabled = true
 		end)
 	end,
 })
