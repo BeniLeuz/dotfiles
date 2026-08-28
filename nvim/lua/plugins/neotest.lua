@@ -2,8 +2,24 @@ local neotest = require("neotest")
 
 -- else this freezes stuff lol
 vim.g.neotest_vstest = {
-  broad_recursive_discovery = false,
+	broad_recursive_discovery = false,
 }
+
+local config_gotest = {
+	runner = "gotestsum", -- Optional, but recommended
+}
+
+if vim.fn.executable("gotestsum") == 0 then
+	local result = vim.system({
+		"go",
+		"install",
+		"gotest.tools/gotestsum@latest",
+	}):wait()
+
+	if result.code ~= 0 then
+		vim.notify(result.stderr, vim.log.levels.ERROR)
+	end
+end
 
 -- run nearest
 vim.keymap.set("n", "<leader>nn", function()
@@ -47,12 +63,13 @@ neotest.setup({
 	},
 	adapters = {
 		require("neotest-java")({}),
-    require("neotest-vstest"),
+		require("neotest-vstest"),
 		-- mark tests
 		-- then :ConfigureGtest
 		-- also nice to have for recompile in terminal just run this:
 		-- find folder | entr -c make or cmake
 		require("neotest-gtest").setup({}),
+		require("neotest-golang")(config_gotest),
 	},
 	summary = {
 		open = "botright vsplit | vertical resize 40",
