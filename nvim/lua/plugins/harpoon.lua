@@ -18,9 +18,23 @@ end)
 vim.keymap.set({ "n", "t" }, "<C-e>", function()
 	harpoon.ui:toggle_quick_menu(current_list())
 end)
-vim.keymap.set({ "n" }, "<C-c>", function()
-	harpoon.ui:close_menu()
-end)
+
+-- bufferlocal so that it does not trigger on other window commands lol
+harpoon:extend({
+	UI_CREATE = function(cx)
+		vim.keymap.set("n", "<C-c>", function()
+			harpoon.ui:toggle_quick_menu()
+		end, {
+			buffer = cx.bufnr,
+			silent = true,
+			desc = "Close Harpoon menu",
+		})
+	end,
+})
+
+-- vim.keymap.set({ "n" }, "<C-c>", function()
+-- 	harpoon.ui:close_menu()
+-- end)
 vim.keymap.set({ "n", "t" }, "<C-h>", function()
 	current_list():select(1)
 end)
@@ -47,17 +61,16 @@ end
 
 ---@param index number: The index of the terminal to select.
 local function select_term(index)
-  local term_list = terminals()
-  local item = term_list:get(index)
+	local term_list = terminals()
+	local item = term_list:get(index)
 
-  if not item then
-    create_terminal()
-    term_list:replace_at(index)
-  end
+	if not item then
+		create_terminal()
+		term_list:replace_at(index)
+	end
 
-  term_list:select(index)
+	term_list:select(index)
 end
-
 
 local function remove_closed_terms()
 	local term_list = terminals()

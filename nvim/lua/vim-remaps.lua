@@ -16,17 +16,32 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 local function close_window_without_closing_tab()
-	if #vim.api.nvim_tabpage_list_wins(0) == 1 then
-		vim.api.nvim_echo({ { "E444: Cannot close last window", "ErrorMsg" } }, true, { err = true })
-		return
-	end
+  local current_win = vim.api.nvim_get_current_win()
+  local current_config = vim.api.nvim_win_get_config(current_win)
 
-	vim.cmd("close")
+  -- ui2 and floats can always close.
+  if current_config.relative ~= "" then
+    vim.cmd("close")
+    return
+  end
+
+  local normal_windows = vim.tbl_filter(function(win)
+    return vim.api.nvim_win_get_config(win).relative == ""
+  end, vim.api.nvim_tabpage_list_wins(0))
+
+  if #normal_windows == 1 then
+    vim.api.nvim_echo({
+      { "E444: Cannot close last window", "ErrorMsg" },
+    }, true, { err = true })
+    return
+  end
+
+  vim.cmd("close")
 end
+
 
 -- make sure the last windows in a tab will never close! (used for projectionizer and project per tab workflow)
 vim.keymap.set("n", "<C-w>c", close_window_without_closing_tab, { desc = "Close window" })
-vim.keymap.set("n", "<C-w><C-c>", close_window_without_closing_tab, { desc = "Close window" })
 
 -- copy logics
 -- vim.keymap.set('n', 'd', "\"_d")
@@ -53,8 +68,8 @@ vim.keymap.set("t", "<C-f>", "<C-\\><C-n>")
 
 -- command line window remap magic. ctrl-f being a toggle now
 vim.keymap.set({ "i", "v", "n" }, "<C-f>", function()
-	local keys = vim.api.nvim_replace_termcodes("<Esc><C-c>", true, false, true)
-	vim.api.nvim_feedkeys(keys, "n", false)
+  local keys = vim.api.nvim_replace_termcodes("<Esc><C-c>", true, false, true)
+  vim.api.nvim_feedkeys(keys, "n", false)
 end, { noremap = true, silent = true })
 
 -- command line window only tbh
@@ -80,20 +95,20 @@ vim.keymap.set({ "n" }, "<leader>cd", vim.diagnostic.open_float)
 -- maybe one day lets see if i can work with only nvim tabs froim now on then i might
 -- legit switch to only using nvim and also rebinding cmd+t/w and stuff
 for i = 1, 9 do
-	vim.keymap.set(
-		{ "n", "i", "v", "t", "c" },
-		"<M-" .. i .. ">",
-		"<Cmd>tabn " .. i .. "<CR>",
-		{ desc = "Go to tab " .. i }
-	)
+  vim.keymap.set(
+    { "n", "i", "v", "t", "c" },
+    "<M-" .. i .. ">",
+    "<Cmd>tabn " .. i .. "<CR>",
+    { desc = "Go to tab " .. i }
+  )
 end
 
 vim.keymap.set({ "n", "i", "v", "t", "c" }, "<M-w>", "<Cmd>tabclose<CR>", { desc = "Close tab" })
 vim.keymap.set({ "n", "i", "v", "t", "c" }, "<M-t>", function()
-	vim.cmd("tabnew")
-	vim.cmd("tcd ~")
-	vim.cmd("term")
-	vim.cmd("startinsert")
+  vim.cmd("tabnew")
+  vim.cmd("tcd ~")
+  vim.cmd("term")
+  vim.cmd("startinsert")
 end, { desc = "open fresh term in home" })
 
 vim.keymap.set("n", "<leader>2", "<Cmd>tabn 2<CR>")
@@ -102,70 +117,70 @@ vim.keymap.set("n", "<leader>4", "<Cmd>tabn 4<CR>")
 vim.keymap.set("n", "<leader>w", "<Cmd>tabclose<CR>")
 -- move tabs
 vim.keymap.set("n", "<leader>H", function()
-	vim.cmd("tabmove -1")
+  vim.cmd("tabmove -1")
 end)
 vim.keymap.set("n", "<leader>L", function()
-	vim.cmd("tabmove +1")
+  vim.cmd("tabmove +1")
 end)
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "man",
-	callback = function(args)
-		vim.keymap.set("n", "q", "<Nop>", { buffer = args.buf, silent = true })
-	end,
+  pattern = "man",
+  callback = function(args)
+    vim.keymap.set("n", "q", "<Nop>", { buffer = args.buf, silent = true })
+  end,
 })
 
 -- this will highlight direkt yanking so we can try to get better at yanking without visual
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	callback = function()
-		vim.hl.on_yank({ on_visual = false })
-	end,
+  desc = "Highlight when yanking (copying) text",
+  callback = function()
+    vim.hl.on_yank({ on_visual = false })
+  end,
 })
 
 local function ensure_tab_scratch_buf()
-	local buf = vim.t.scratch_buf
-	if buf and vim.api.nvim_buf_is_valid(buf) then
-		return buf
-	end
+  local buf = vim.t.scratch_buf
+  if buf and vim.api.nvim_buf_is_valid(buf) then
+    return buf
+  end
 
-	buf = vim.api.nvim_create_buf(false, true)
-	vim.api.nvim_buf_set_name(buf, ("scratch://tab/%d"):format(vim.api.nvim_get_current_tabpage()))
-	vim.bo[buf].bufhidden = "hide"
-	vim.bo[buf].swapfile = false
+  buf = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_buf_set_name(buf, ("scratch://tab/%d"):format(vim.api.nvim_get_current_tabpage()))
+  vim.bo[buf].bufhidden = "hide"
+  vim.bo[buf].swapfile = false
 
-	vim.t.scratch_buf = buf
-	return buf
+  vim.t.scratch_buf = buf
+  return buf
 end
 
 local function open_scratch_split()
-	local buf = ensure_tab_scratch_buf()
+  local buf = ensure_tab_scratch_buf()
 
-	if vim.api.nvim_get_current_buf() == buf then
-		return
-	end
+  if vim.api.nvim_get_current_buf() == buf then
+    return
+  end
 
-	for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-		if vim.api.nvim_win_get_buf(win) == buf then
-			vim.api.nvim_set_current_win(win)
-			return
-		end
-	end
+  for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+    if vim.api.nvim_win_get_buf(win) == buf then
+      vim.api.nvim_set_current_win(win)
+      return
+    end
+  end
 
-	vim.cmd("new")
-	vim.api.nvim_win_set_buf(0, buf)
+  vim.cmd("new")
+  vim.api.nvim_win_set_buf(0, buf)
 end
 
 vim.keymap.set("n", "<C-w>n", open_scratch_split, { desc = "Open scratch window" })
 
 -- remap for vim.pack uninstall inactive plugins...
 vim.keymap.set("n", "<leader>vpu", function()
-	vim.pack.del(vim.iter(vim.pack.get())
-		:filter(function(x)
-			return not x.active
-		end)
-		:map(function(x)
-			return x.spec.name
-		end)
-		:totable())
-end, { desc = "removes all inactive plugins from vim.pack" } )
+  vim.pack.del(vim.iter(vim.pack.get())
+    :filter(function(x)
+      return not x.active
+    end)
+    :map(function(x)
+      return x.spec.name
+    end)
+    :totable())
+end, { desc = "removes all inactive plugins from vim.pack" })
