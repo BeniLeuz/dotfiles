@@ -43,13 +43,30 @@ local function is_difftool_qf()
   return qf_list.title and string.match(qf_list.title, 'tool') ~= nil
 end
 
+local diff_base = '@{upstream}'
+
+local function resolve_diff_base()
+  local upstream = vim.fn.FugitiveExecute({
+    'rev-parse',
+    '--verify',
+    '--quiet',
+    '@{upstream}^{commit}',
+  })
+
+  if upstream.exit_status == 0 then
+    return '@{upstream}'
+  end
+
+  return 'HEAD'
+end
+
 local function open_qf_diff()
   vim.cmd('.cc')
   local qf_list = vim.fn.getqflist({ title = 0 })
   if string.match(qf_list.title, 'mergetool') ~= nil then
     vim.cmd('Gvdiffsplit!')
   else
-    vim.cmd('Gvdiffsplit @{upstream}')
+    vim.cmd('Gvdiffsplit ' .. diff_base)
   end
   local height = math.floor(vim.o.lines / 3)
   vim.cmd('copen ' .. height)
@@ -59,11 +76,12 @@ end
 
 -- diff with a double view and quickfix
 vim.keymap.set('n', '<leader>du', function()
-  vim.cmd('Git difftool @{upstream}')
+  diff_base = resolve_diff_base()
+  vim.cmd('Git difftool ' .. diff_base)
   pcall(function()
     open_qf_diff()
   end)
-end)
+end, { desc = 'Diff against upstream or HEAD' })
 
 
 -- just so we dont reset on subsequent autocmds
