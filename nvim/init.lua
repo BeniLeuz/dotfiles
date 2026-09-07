@@ -38,7 +38,8 @@ vim.pack.add({
 	{ src = "https://github.com/Nsidorenco/neotest-vstest" },
 	{ src = "https://github.com/nvim-neotest/neotest" },
   -- golang test
-	{ src = "https://github.com/fredrikaverpil/neotest-golang" },
+  -- this suffers from the same broad recursive search that vstest does... another pr?
+	-- { src = "https://github.com/fredrikaverpil/neotest-golang" },
 })
 
 -- vim.o.shell = '/bin/bash -l'
