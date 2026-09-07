@@ -44,6 +44,7 @@ local function is_difftool_qf()
 end
 
 local diff_base = '@{upstream}'
+local untracked_files = {}
 
 local function resolve_diff_base()
   local upstream = vim.fn.FugitiveExecute({
@@ -60,10 +61,45 @@ local function resolve_diff_base()
   return 'HEAD'
 end
 
+local function collect_untracked_files()
+  untracked_files = {}
+
+  local worktree = vim.fn.FugitiveWorkTree()
+  if worktree == '' then return {} end
+
+  local result = vim.fn.FugitiveExecute({
+    '-c',
+    'core.quotePath=false',
+    'ls-files',
+    '--others',
+    '--exclude-standard',
+  })
+  if result.exit_status ~= 0 then return {} end
+
+  local items = {}
+  for _, path in ipairs(result.stdout) do
+    if path ~= '' then
+      local filename = vim.fs.joinpath(worktree, path)
+      untracked_files[vim.fs.normalize(filename)] = true
+      table.insert(items, {
+        filename = filename,
+        lnum = 1,
+        text = 'Untracked',
+      })
+    end
+  end
+
+  return items
+end
+
 local function open_qf_diff()
   vim.cmd('.cc')
   local qf_list = vim.fn.getqflist({ title = 0 })
   if string.match(qf_list.title, 'mergetool') ~= nil then
+    vim.cmd('Gvdiffsplit!')
+  elseif untracked_files[vim.fs.normalize(vim.api.nvim_buf_get_name(0))] then
+    -- Match Fugitive's `dv` behavior: diff the worktree file against its
+    -- missing index entry, which produces an empty left-hand buffer.
     vim.cmd('Gvdiffsplit!')
   else
     vim.cmd('Gvdiffsplit ' .. diff_base)
@@ -77,7 +113,11 @@ end
 -- diff with a double view and quickfix
 vim.keymap.set('n', '<leader>du', function()
   diff_base = resolve_diff_base()
+  local untracked_items = collect_untracked_files()
   vim.cmd('Git difftool ' .. diff_base)
+  if #untracked_items > 0 then
+    vim.fn.setqflist(untracked_items, 'a')
+  end
   pcall(function()
     open_qf_diff()
   end)
