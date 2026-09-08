@@ -66,12 +66,6 @@ vim.keymap.set("v", "<leader>y", '"+y')
 -- go out of terminal mode easy access
 vim.keymap.set("t", "<C-f>", "<C-\\><C-n>")
 
--- command line window remap magic. ctrl-f being a toggle now
-vim.keymap.set({ "i", "v", "n" }, "<C-f>", function()
-  local keys = vim.api.nvim_replace_termcodes("<Esc><C-c>", true, false, true)
-  vim.api.nvim_feedkeys(keys, "n", false)
-end, { noremap = true, silent = true })
-
 -- command line window only tbh
 -- vim.keymap.set('n', ':', function()
 --   local buftype = vim.bo.buftype

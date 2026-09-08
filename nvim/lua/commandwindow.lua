@@ -44,11 +44,15 @@ end
 
 vim.api.nvim_create_autocmd("CmdwinEnter", {
   pattern = ":",
-  callback = function()
+  callback = function(args)
     -- Create a local mapping for the command window
     vim.keymap.set({ 'n', 'i', 'v' }, '<CR>',
       [[<cmd>lua executeModifiedCommand()<CR>]],
       { buffer = 0 })
+
+    vim.keymap.set({ "i", "v", "n" }, "<C-f>", function()
+      local keys = vim.api.nvim_replace_termcodes("<Esc><C-c>", true, false, true)
+      vim.api.nvim_feedkeys(keys, "n", false)
+    end, { buffer = args.buf, noremap = true, silent = true })
   end
 })
-
