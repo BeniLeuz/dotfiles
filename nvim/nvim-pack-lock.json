@@ -87,6 +87,10 @@
       "rev": "77ccaeb",
       "src": "https://github.com/mfussenegger/nvim-jdtls"
     },
+    "nvim-jls": {
+      "rev": "134c3d03826ef1f521b1012760a54595d9490f43",
+      "src": "https://github.com/idelice/nvim-jls"
+    },
     "nvim-lspconfig": {
       "rev": "cb5bc0b2b35a6d513e3298d285db81453e791f4f",
       "src": "https://github.com/neovim/nvim-lspconfig"
@@ -107,6 +111,10 @@
     "roslyn.nvim": {
       "rev": "f2ec6ee6384c3b611ddc817b9e78b20cd0334bbb",
       "src": "https://github.com/seblyng/roslyn.nvim"
+    },
+    "servery.nvim": {
+      "rev": "79eb3dec8acbdbe726beec9d75dbb5b7759fa74b",
+      "src": "https://github.com/wurli/servery.nvim"
     },
     "snacks.nvim": {
       "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
